@@ -26,6 +26,8 @@
             }
         }
     }
+    
+    return self;
 }
 
 @end

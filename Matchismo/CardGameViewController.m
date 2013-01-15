@@ -18,7 +18,7 @@
 
 @implementation CardGameViewController
 
-- (PlayingCardDeck *)getDeck:(PlayingCardDeck *)deck {
+- (PlayingCardDeck *)deck {
     if (_deck == nil) {
         _deck = [[PlayingCardDeck alloc] init];
     }
@@ -35,8 +35,8 @@
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {
         Card *card = [self.deck drawRandomCard];
-        NSLog(@"%@", [card contents]);
-        [sender setTitle:[card contents] forState:UIControlStateSelected];
+        NSString *buttonContent = card == nil ? @"Out!" : [card contents];
+        [sender setTitle:buttonContent forState:UIControlStateSelected];
     }
     ++self.flipCount;
 }

@@ -22,18 +22,22 @@
     }
 }
 
+- (void)setRank:(NSUInteger)rank {
+    if (rank > 0 && rank <= PlayingCard.maxRank) {
+        _rank = rank;
+    }
+}
+
 - (NSString *)suit {
     return _suit ? _suit : @"?";
 }
 
-- (NSString *)contents {
-    
-    return @"derp";
-    //return [NSString stringWithFormat:@"%@ %@", rankStrings[self.rank], self.suit];
-}
-
 + (NSArray *)rankStrings {
     return @[@"?", @"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"J", @"Q", @"K"];
+}
+
+- (NSString *)contents {
+    return [NSString stringWithFormat:@"%@ %@", [PlayingCard rankStrings][self.rank], self.suit];
 }
 
 + (NSUInteger)maxRank {
