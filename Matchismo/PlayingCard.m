@@ -53,6 +53,10 @@
     return [NSString stringWithFormat:@"%@ %@", [PlayingCard rankStrings][self.rank], self.suit];
 }
 
+- (NSString *)description {
+    return self.contents;
+}
+
 + (NSUInteger)maxRank {
     return [self rankStrings].count - 1;
 }

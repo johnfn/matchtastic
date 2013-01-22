@@ -50,19 +50,28 @@
     if (card.isUnplayable) return;
     
     if (!card.isFaceUp) {
+        self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
+        
         for (Card *otherCard in self.cards) {
             if (otherCard.isFaceUp && !otherCard.isUnplayable) {
                 int matchScore = [card match:@[otherCard]];
+                int score = 0;
                 
                 if (matchScore) {
                     otherCard.unplayable = YES;
                     card.unplayable = YES;
                     
-                    self.score += matchScore * MATCH_BONUS;
+                    score = matchScore * MATCH_BONUS;
+                    
+                    self.score += score;
+                    self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ match! +%d points.", card, otherCard, score];
                 } else {
                     otherCard.faceUp = NO;
                     
-                    self.score -= MISMATCH_PENALTY;
+                    score = MISMATCH_PENALTY;
+                    
+                    self.score -= score;
+                    self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ don't match! -%d points.", card, otherCard, score];
                 }
                 
                 break;
