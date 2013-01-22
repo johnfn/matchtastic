@@ -14,6 +14,19 @@
     return @[@"♥", @"♦", @"♣", @"♣"];
 }
 
+- (int)match:(NSArray *)otherCards {
+    if (otherCards.count == 1) {
+        PlayingCard *otherCard = [otherCards lastObject];
+        if ([otherCard.suit isEqualToString:self.suit]) {
+            return 1;
+        } else {
+            return 4;
+        }
+    }
+    
+    return 0;
+}
+
 @synthesize suit = _suit;
 
 - (void)setSuit:(NSString *)suit {
