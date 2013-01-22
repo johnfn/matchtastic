@@ -19,7 +19,7 @@
         PlayingCard *otherCard = [otherCards lastObject];
         if ([otherCard.suit isEqualToString:self.suit]) {
             return 1;
-        } else {
+        } else if (otherCard.rank == self.rank) {
             return 4;
         }
     }

@@ -199,11 +199,19 @@
                                     <action selector="flipCard:" destination="2" eventType="touchUpInside" id="iUy-hL-gIZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="62G-G8-fE0">
+                                <rect key="frame" x="202" y="419" width="98" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="Q5N-09-NjI" id="ETx-XW-VB1"/>
+                        <outlet property="scoreLabel" destination="62G-G8-fE0" id="zfr-dR-aH9"/>
                         <outletCollection property="cardButtons" destination="IHo-Zs-4zn" id="fSb-Nj-j2R"/>
                         <outletCollection property="cardButtons" destination="IHo-Zs-4zn" id="yvd-6O-ZoJ"/>
                         <outletCollection property="cardButtons" destination="hxE-kz-2T9" id="ejM-Xa-3VK"/>
@@ -229,6 +237,7 @@
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
         </class>
