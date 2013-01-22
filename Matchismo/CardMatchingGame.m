@@ -11,6 +11,8 @@
 @interface CardMatchingGame()
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (nonatomic) int score;
+@property (nonatomic) bool isTripleMatchGame;
+@property (readwrite, nonatomic) bool hasGameBegun;
 @end
 
 @implementation CardMatchingGame
@@ -36,6 +38,12 @@
     return self;
 }
 
+- (void)setGameType:(bool)tripleMatch {
+    if (self.hasGameBegun) return;
+    
+    self.isTripleMatchGame = tripleMatch;
+}
+
 - (Card *)cardAtIndex:(NSUInteger)index {
     return (index < self.cards.count) ? self.cards[index] : nil;
 }
@@ -45,6 +53,8 @@
 #define MATCH_BONUS 4
 
 - (void)flipCardAtIndex:(NSUInteger)index {
+    self.hasGameBegun = true;
+    
     Card *card = [self cardAtIndex:index];
     
     if (card.isUnplayable) return;
@@ -60,7 +70,6 @@
                 if (matchScore) {
                     otherCard.unplayable = YES;
                     card.unplayable = YES;
-                    
                     score = matchScore * MATCH_BONUS;
                     
                     self.score += score;

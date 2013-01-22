@@ -266,7 +266,7 @@
                                     <action selector="flipCard:" destination="2" eventType="touchUpInside" id="BZF-kv-bxe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="You matched all the cards! Nice!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OGe-pT-gtX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;TODO: meaningful start message>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OGe-pT-gtX">
                                 <rect key="frame" x="26" y="376" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -274,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UrR-tN-UgV">
-                                <rect key="frame" x="130" y="412" width="61" height="44"/>
+                                <rect key="frame" x="9" y="405" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Deal!">
@@ -288,12 +288,27 @@
                                     <action selector="dealButton:" destination="2" eventType="touchUpInside" id="ctq-KV-dCP"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="o3N-hP-dM9">
+                                <rect key="frame" x="243" y="404" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchGameType:" destination="2" eventType="valueChanged" id="z27-t9-HIe"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3X match mode extravaganza:" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rm7-HT-dxo">
+                                <rect key="frame" x="84" y="407" width="152" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="flipDescription" destination="OGe-pT-gtX" id="lqe-QO-5FX"/>
                         <outlet property="flipsLabel" destination="Q5N-09-NjI" id="ETx-XW-VB1"/>
+                        <outlet property="gameTypeSwitch" destination="o3N-hP-dM9" id="q2c-iA-PA8"/>
                         <outlet property="scoreLabel" destination="62G-G8-fE0" id="zfr-dR-aH9"/>
                         <outletCollection property="cardButtons" destination="IHo-Zs-4zn" id="fSb-Nj-j2R"/>
                         <outletCollection property="cardButtons" destination="IHo-Zs-4zn" id="yvd-6O-ZoJ"/>
@@ -316,6 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="120" y="16"/>
         </scene>
     </scenes>
     <classes>
@@ -324,8 +340,10 @@
             <relationships>
                 <relationship kind="action" name="dealButton:"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="switchGameType:"/>
                 <relationship kind="outlet" name="flipDescription" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gameTypeSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>

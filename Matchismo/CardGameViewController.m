@@ -18,14 +18,19 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flipDescription;
+@property (weak, nonatomic) IBOutlet UISwitch *gameTypeSwitch;
 
 @end
 
 @implementation CardGameViewController
 
 - (CardMatchingGame *)game {
-    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                          usingDeck:[[PlayingCardDeck alloc] init]];
+    if (!_game) {
+        _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+                                                              usingDeck:[[PlayingCardDeck alloc] init]];
+        [self updateUI];
+    }
+    
     return _game;
 }
 
@@ -34,6 +39,10 @@
                                               usingDeck:[[PlayingCardDeck alloc] init]];
     
     [self updateUI];
+}
+
+- (IBAction)switchGameType:(id)sender {
+    
 }
 
 - (void)setCardButtons:(NSArray *)cardButtons {
@@ -51,6 +60,7 @@
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
     }
     
+    self.gameTypeSwitch.enabled = !self.game.hasGameBegun;
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.flipDescription.text = self.game.lastFlipResult;
 }
