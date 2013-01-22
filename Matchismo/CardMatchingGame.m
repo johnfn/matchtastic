@@ -52,6 +52,86 @@
 #define MISMATCH_PENALTY 2
 #define MATCH_BONUS 4
 
+- (void)calculateScorePair:(Card *)card {
+    self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
+    
+    for (Card *otherCard in self.cards) {
+        if (otherCard.isFaceUp && !otherCard.isUnplayable) {
+            int matchScore = [card match:@[otherCard]];
+            int score = 0;
+            
+            if (matchScore) {
+                otherCard.unplayable = YES;
+                card.unplayable = YES;
+                score = matchScore * MATCH_BONUS;
+                
+                self.score += score;
+                self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ match! +%d points.", card, otherCard, score];
+            } else {
+                otherCard.faceUp = NO;
+                
+                score = MISMATCH_PENALTY;
+                
+                self.score -= score;
+                self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ don't match! -%d points.", card, otherCard, score];
+            }
+            
+            break;
+        }
+    }
+    
+    self.score -= FLIP_COST;
+}
+
+- (NSArray *) faceUpCards {
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    for (Card *card in self.cards) {
+        if (card.isFaceUp && !card.isUnplayable) {
+            [result addObject:card];
+        }
+    }
+    
+    return [result copy];
+}
+
+- (void)calculateScore:(NSUInteger)pairSize justFlipped:(Card *)card {
+    self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
+    card.faceUp = !card.faceUp;
+    
+    NSLog(@"%@", [self faceUpCards]);
+    
+    if ([self faceUpCards].count != pairSize) {
+        return;
+    }
+
+    NSMutableArray *matchingCards = [[NSMutableArray alloc] init];
+    [matchingCards addObject:card];
+    
+    for (Card *otherCard in [self faceUpCards]) {
+        if (otherCard == card) continue;
+        
+        if ([otherCard match:matchingCards]) {
+            [matchingCards addObject:otherCard];
+        }
+    }
+    
+    // If every card matched, then we have a valid match.
+    bool validMatch = [matchingCards count] == pairSize;
+    
+    NSLog(validMatch ? @"true" : @"false");
+    
+    for (Card *matchedCard in [self faceUpCards]) {
+        matchedCard.faceUp = validMatch;
+        matchedCard.unplayable = validMatch;
+    }
+    
+    // TODO: print out matches
+    // TODO: scoring
+    
+    card.faceUp = true;
+}
+
 - (void)flipCardAtIndex:(NSUInteger)index {
     self.hasGameBegun = true;
     
@@ -59,39 +139,7 @@
     
     if (card.isUnplayable) return;
     
-    if (!card.isFaceUp) {
-        self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
-        
-        for (Card *otherCard in self.cards) {
-            if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                int matchScore = [card match:@[otherCard]];
-                int score = 0;
-                
-                if (matchScore) {
-                    otherCard.unplayable = YES;
-                    card.unplayable = YES;
-                    score = matchScore * MATCH_BONUS;
-                    
-                    self.score += score;
-                    self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ match! +%d points.", card, otherCard, score];
-                } else {
-                    otherCard.faceUp = NO;
-                    
-                    score = MISMATCH_PENALTY;
-                    
-                    self.score -= score;
-                    self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ don't match! -%d points.", card, otherCard, score];
-                }
-                
-                break;
-            }
-        }
-        
-        self.score -= FLIP_COST;
-    }
-    
-    card.faceUp = !card.faceUp;
-    
+    [self calculateScore:2 justFlipped:card];
 }
 
 @end

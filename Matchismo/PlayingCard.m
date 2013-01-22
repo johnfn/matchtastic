@@ -14,17 +14,37 @@
     return @[@"♥", @"♦", @"♣", @"♣"];
 }
 
+#define SUIT_MATCH 1
+#define RANK_MATCH 4
+
 - (int)match:(NSArray *)otherCards {
-    if (otherCards.count == 1) {
-        PlayingCard *otherCard = [otherCards lastObject];
-        if ([otherCard.suit isEqualToString:self.suit]) {
-            return 1;
-        } else if (otherCard.rank == self.rank) {
-            return 4;
-        }
+    if (otherCards.count == 0) return 0;
+    
+    int score = 0;
+    PlayingCard *otherCard = [otherCards lastObject];
+    
+    if ([otherCard.suit isEqualToString:self.suit]) {
+        score = SUIT_MATCH;
+    } else if (otherCard.rank == self.rank) {
+        score = RANK_MATCH;
     }
     
-    return 0;
+    if (otherCards.count == 1) {
+        return score;
+    }
+    
+    /*  We'll call it a match if every card in the array matches
+        this card in the same way.
+     
+        This makes an implicit assumption that different ways to match
+        will have different scores. If that's not true, this code will
+        need to be modified. */
+    
+    for (Card *otherCard in otherCards) {
+        if ([otherCard match:@[self]] == 0) return 0;
+    }
+    
+    return score;
 }
 
 @synthesize suit = _suit;
