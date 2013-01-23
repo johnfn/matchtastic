@@ -41,8 +41,8 @@
     [self updateUI];
 }
 
-- (IBAction)switchGameType:(id)sender {
-    
+- (IBAction)switchGameType:(UISwitch*)sender {
+    [_game setGameType:sender.isOn];
 }
 
 - (void)setCardButtons:(NSArray *)cardButtons {

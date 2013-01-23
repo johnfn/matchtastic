@@ -48,41 +48,6 @@
     return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
-#define FLIP_COST 1
-#define MISMATCH_PENALTY 2
-#define MATCH_BONUS 4
-
-- (void)calculateScorePair:(Card *)card {
-    self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
-    
-    for (Card *otherCard in self.cards) {
-        if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-            int matchScore = [card match:@[otherCard]];
-            int score = 0;
-            
-            if (matchScore) {
-                otherCard.unplayable = YES;
-                card.unplayable = YES;
-                score = matchScore * MATCH_BONUS;
-                
-                self.score += score;
-                self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ match! +%d points.", card, otherCard, score];
-            } else {
-                otherCard.faceUp = NO;
-                
-                score = MISMATCH_PENALTY;
-                
-                self.score -= score;
-                self.lastFlipResult = [NSString stringWithFormat:@"%@ and %@ don't match! -%d points.", card, otherCard, score];
-            }
-            
-            break;
-        }
-    }
-    
-    self.score -= FLIP_COST;
-}
-
 - (NSArray *) faceUpCards {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
@@ -95,23 +60,35 @@
     return [result copy];
 }
 
+#define FLIP_COST -1
+#define MISMATCH_PENALTY -2
+#define MATCH_BONUS 4
+
 - (void)calculateScore:(NSUInteger)pairSize justFlipped:(Card *)card {
     self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
     card.faceUp = !card.faceUp;
     
-    NSLog(@"%@", [self faceUpCards]);
+    int score = FLIP_COST;
     
     if ([self faceUpCards].count != pairSize) {
+        if (!card.faceUp) {
+            self.lastFlipResult = [NSString stringWithFormat:@"Unflipped %@ for a score of %d", card, score];
+            self.score += score;
+        }
+        
         return;
     }
 
+    int scoreMultiplier = 0;
     NSMutableArray *matchingCards = [[NSMutableArray alloc] init];
     [matchingCards addObject:card];
     
     for (Card *otherCard in [self faceUpCards]) {
         if (otherCard == card) continue;
         
-        if ([otherCard match:matchingCards]) {
+        scoreMultiplier = [otherCard match:matchingCards];
+        
+        if (scoreMultiplier) {
             [matchingCards addObject:otherCard];
         }
     }
@@ -121,14 +98,22 @@
     
     NSLog(validMatch ? @"true" : @"false");
     
+    // calculate score
+    
+    if (!validMatch) {
+        score += MISMATCH_PENALTY;
+    } else {
+        score += ([matchingCards count] - 1) * MATCH_BONUS * scoreMultiplier;
+    }
+    
+    self.score += score;
+    
+    self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@ for a score of %d", card, score];
+    
     for (Card *matchedCard in [self faceUpCards]) {
         matchedCard.faceUp = validMatch;
         matchedCard.unplayable = validMatch;
     }
-    
-    // TODO: print out matches
-    // TODO: scoring
-    
     card.faceUp = true;
 }
 
@@ -139,7 +124,7 @@
     
     if (card.isUnplayable) return;
     
-    [self calculateScore:2 justFlipped:card];
+    [self calculateScore: (self.isTripleMatchGame ? 3 : 2) justFlipped:card];
 }
 
 @end
