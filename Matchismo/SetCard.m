@@ -15,8 +15,8 @@
     return @[@"▲", @"●", @"■"];
 }
 
-+ (NSUInteger)highestCount {
-    return 3;
++ (NSArray *)validCounts {
+    return @[@1, @2, @3];
 }
 
 + (NSArray *)validShadings {
@@ -27,14 +27,25 @@
     return @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
 }
 
++ (int)match:(NSArray *)cards {
+    if (cards.count < 3) return 0;
+    
+    bool symbolMatch  = false;
+    bool countMatch   = false;
+    bool shadingMatch = false;
+    bool colorMatch   = false;
+    
+    
+}
+
 - (void)setType:(NSString *)symbol {
     if ([[SetCard validSymbols] containsObject:symbol]) {
         _symbol = symbol;
     }
 }
 
-- (void)setCount:(NSUInteger)count {
-    if (count != 0 && count <= [SetCard highestCount]) {
+- (void)setCount:(NSNumber *)count {
+    if ([[SetCard validCounts] containsObject:count]) {
         _count = count;
     }
 }
@@ -42,7 +53,7 @@
 - (NSString *)description {
     NSMutableString *result = [[NSMutableString alloc] init];
     
-    for (int i = 0; i < _count; i++) {
+    for (int i = 0; i < [_count integerValue]; i++) {
         [result appendString:_symbol];
     }
     

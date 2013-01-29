@@ -91,8 +91,6 @@
     // We count either 2-card matches or 3-card matches as valid.
     bool validMatch = [matchingCards count] >= 2;
     
-    NSLog(validMatch ? @"true" : @"false");
-    
     // calculate score
     
     if (!validMatch) {

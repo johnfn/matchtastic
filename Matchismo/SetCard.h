@@ -10,13 +10,13 @@
 #import "Card.h"
 
 @interface SetCard : Card
-@property (strong, nonatomic) NSString *symbol;
-@property (nonatomic) NSUInteger count;
-@property (nonatomic) NSString *shading;
-@property (nonatomic) UIColor * color;
+@property (strong, nonatomic) NSString* symbol;
+@property (nonatomic) NSNumber* count;
+@property (nonatomic) NSString* shading;
+@property (nonatomic) UIColor* color;
 
 + (NSArray *)validSymbols;
-+ (NSUInteger)highestCount;
++ (NSArray *)validCounts;
 + (NSArray *)validShadings;
 + (NSArray *)validColors;
 
