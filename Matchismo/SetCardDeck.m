@@ -17,11 +17,17 @@
     if (self) {
         for (NSString *type in [SetCard validTypes]) {
             for (NSUInteger count = 1; count <= [SetCard highestCount]; count++) {
-                SetCard *card = [[SetCard alloc] init];
-                card.count = count;
-                card.type = type;
-                
-                [self addCard:card atTop:YES];
+                for (NSString *shading in [SetCard validShadings]) {
+                    for (NSNumber *color in [SetCard validColors]) {
+                        SetCard *card = [[SetCard alloc] init];
+                        card.count = count;
+                        card.type = type;
+                        card.shading = shading;
+                        card.color = [color integerValue];
+                        
+                        [self addCard:card atTop:YES];
+                    }
+                }
             }
         }
     }
