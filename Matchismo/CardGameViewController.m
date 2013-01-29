@@ -41,16 +41,14 @@
     [self updateUI];
 }
 
-- (IBAction)switchGameType:(UISwitch*)sender {
-    [_game setGameType:sender.isOn];
-}
-
 - (void)setCardButtons:(NSArray *)cardButtons {
     _cardButtons = cardButtons;
     [self updateUI];
 }
 
 - (void)updateUI {
+    UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
+    
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
@@ -58,8 +56,10 @@
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
+        
+        [cardButton setImage:cardBackImage forState:UIControlStateSelected|UIControlStateDisabled];
     }
-    
+
     self.gameTypeSwitch.enabled = !self.game.hasGameBegun;
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.flipDescription.text = self.game.lastFlipResult;

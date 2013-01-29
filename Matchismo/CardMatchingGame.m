@@ -11,7 +11,6 @@
 @interface CardMatchingGame()
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (nonatomic) int score;
-@property (nonatomic) bool isTripleMatchGame;
 @property (readwrite, nonatomic) bool hasGameBegun;
 @end
 
@@ -36,12 +35,6 @@
     }
     
     return self;
-}
-
-- (void)setGameType:(bool)tripleMatch {
-    if (self.hasGameBegun) return;
-    
-    self.isTripleMatchGame = tripleMatch;
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index {
@@ -93,8 +86,8 @@
         }
     }
     
-    // If every card matched, then we have a valid match.
-    bool validMatch = [matchingCards count] == pairSize;
+    // We count either 2-card matches or 3-card matches as valid.
+    bool validMatch = [matchingCards count] >= 2;
     
     NSLog(validMatch ? @"true" : @"false");
     
@@ -114,6 +107,7 @@
         matchedCard.faceUp = validMatch;
         matchedCard.unplayable = validMatch;
     }
+    
     card.faceUp = true;
 }
 
@@ -124,7 +118,7 @@
     
     if (card.isUnplayable) return;
     
-    [self calculateScore: (self.isTripleMatchGame ? 3 : 2) justFlipped:card];
+    [self calculateScore: 3 justFlipped:card];
 }
 
 @end
