@@ -72,7 +72,7 @@
         return;
     }
 
-    int scoreMultiplier = [Card match:[self faceUpCards]];
+    int scoreMultiplier = [[card class] match:[self faceUpCards]];
     
     // calculate score
     
