@@ -72,41 +72,33 @@
         return;
     }
 
-    int scoreMultiplier = 0;
-    NSMutableArray *matchingCards = [[NSMutableArray alloc] init];
-    [matchingCards addObject:card];
-    
-    for (Card *otherCard in [self faceUpCards]) {
-        if (otherCard == card) continue;
-        
-        scoreMultiplier = [otherCard match:matchingCards];
-        
-        if (scoreMultiplier) {
-            [matchingCards addObject:otherCard];
-        }
-    }
-    
-    // We count either 2-card matches or 3-card matches as valid.
-    bool validMatch = [matchingCards count] >= 2;
+    int scoreMultiplier = [Card match:[self faceUpCards]];
     
     // calculate score
     
-    if (!validMatch) {
+    if (!scoreMultiplier) {
         score += MISMATCH_PENALTY;
     } else {
-        score += ([matchingCards count] - 1) * MATCH_BONUS * scoreMultiplier;
+        score += MATCH_BONUS * scoreMultiplier;
     }
     
     self.score += score;
     
     self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@ for a score of %d", card, score];
     
-    for (Card *matchedCard in [self faceUpCards]) {
-        matchedCard.faceUp = validMatch;
-        matchedCard.unplayable = validMatch;
+    if (scoreMultiplier > 0) {
+        for (Card *matchedCard in [self faceUpCards]) {
+            matchedCard.unplayable = true;
+        }
+    
+    } else {
+        for (Card *matchedCard in [self faceUpCards]) {
+            matchedCard.faceUp = false;
+        }
+        
+        card.faceUp = true;
     }
     
-    card.faceUp = true;
 }
 
 - (void)flipCardAtIndex:(NSUInteger)index {
