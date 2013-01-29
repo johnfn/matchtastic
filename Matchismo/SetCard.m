@@ -40,7 +40,8 @@
 }
 
 - (NSString *)description {
-    NSMutableString *result;
+    NSMutableString *result = [[NSMutableString alloc] init];
+    
     for (int i = 0; i < _count; i++) {
         [result appendString:_symbol];
     }

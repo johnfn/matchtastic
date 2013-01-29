@@ -8,8 +8,10 @@
 
 #import "SetViewController.h"
 #import "CardMatchingGame.h"
+#import "SetCardDeck.h"
 
 @interface SetViewController ()
+//TODO - rename
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *SetCards;
 
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -23,8 +25,26 @@
     [self updateUI];
 }
 
-- (void)updateUI {
+- (CardMatchingGame *)game {
+    if (!_game) {
+        _game = [[CardMatchingGame alloc] initWithCardCount:self.SetCards.count
+                                                  usingDeck:[[SetCardDeck alloc] init]];
+        [self updateUI];
+    }
     
+    return _game;
+}
+
+- (void)updateUI {
+    NSLog(@"hello.......");
+    for (UIButton *cardButton in self.SetCards) {
+        Card *card = [self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
+        
+        [cardButton setTitle:card.description forState:UIControlStateNormal];
+        
+        NSLog(@"derp");
+        NSLog(@"%@", card);
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
