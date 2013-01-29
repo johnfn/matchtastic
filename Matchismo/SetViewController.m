@@ -45,7 +45,12 @@
         
         [cardButton setTitle:contents forState:UIControlStateNormal];
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:contents];
-        [str addAttribute:NSForegroundColorAttributeName value:card.color range:wholestring];
+        [str addAttribute:NSStrokeColorAttributeName value:card.color range:wholestring];
+        if (card.shading == @"Normal") {
+            [str addAttribute:NSForegroundColorAttributeName value:card.color range:wholestring];
+        } else if (card.shading == @"Grayed") {
+            [str addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:wholestring];
+        }
         [cardButton setAttributedTitle:str forState:UIControlStateNormal];
     }
 }

@@ -20,7 +20,7 @@
 }
 
 + (NSArray *)validShadings {
-    return @[@"Someshading"];
+    return @[@"Normal", @"Grayed", @"None"];
 }
 
 + (NSArray *)validColors {
