@@ -18,12 +18,12 @@
         for (NSString *symbol in [SetCard validSymbols]) {
             for (NSUInteger count = 1; count <= [SetCard highestCount]; count++) {
                 for (NSString *shading in [SetCard validShadings]) {
-                    for (NSNumber *color in [SetCard validColors]) {
+                    for (UIColor *color in [SetCard validColors]) {
                         SetCard *card = [[SetCard alloc] init];
                         card.count = count;
                         card.symbol = symbol;
                         card.shading = shading;
-                        card.color = [color integerValue];
+                        card.color = color;
                         
                         [self addCard:card atTop:YES];
                     }

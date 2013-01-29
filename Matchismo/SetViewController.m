@@ -9,6 +9,7 @@
 #import "SetViewController.h"
 #import "CardMatchingGame.h"
 #import "SetCardDeck.h"
+#import "SetCard.h"
 
 @interface SetViewController ()
 //TODO - rename
@@ -37,9 +38,15 @@
 
 - (void)updateUI {
     for (UIButton *cardButton in self.SetCards) {
-        Card *card = [self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
+        SetCard *card = (SetCard *)[self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
         
-        [cardButton setTitle:card.description forState:UIControlStateNormal];
+        NSString *contents = card.description;
+        NSRange wholestring = NSMakeRange(0, contents.length);
+        
+        [cardButton setTitle:contents forState:UIControlStateNormal];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:contents];
+        [str addAttribute:NSForegroundColorAttributeName value:card.color range:wholestring];
+        [cardButton setAttributedTitle:str forState:UIControlStateNormal];
     }
 }
 

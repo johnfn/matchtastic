@@ -13,7 +13,7 @@
 @property (strong, nonatomic) NSString *symbol;
 @property (nonatomic) NSUInteger count;
 @property (nonatomic) NSString *shading;
-@property (nonatomic) NSUInteger color;
+@property (nonatomic) UIColor * color;
 
 + (NSArray *)validSymbols;
 + (NSUInteger)highestCount;

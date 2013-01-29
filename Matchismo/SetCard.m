@@ -24,7 +24,7 @@
 }
 
 + (NSArray *)validColors {
-    return @[@0xff0000, @0x00ff00, @0x0000ff];
+    return @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
 }
 
 - (void)setType:(NSString *)symbol {
