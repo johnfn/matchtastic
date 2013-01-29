@@ -19,8 +19,8 @@
     return @[@1, @2, @3];
 }
 
-+ (NSArray *)validShadings {
-    return @[@"Normal", @"Grayed", @"None"];
++ (NSArray *)validShades {
+    return @[[UIColor blackColor], [UIColor grayColor], [UIColor whiteColor]];
 }
 
 + (NSArray *)validColors {
@@ -44,15 +44,15 @@
     // I dug this trick up on StackOverflow:
     // http://stackoverflow.com/questions/2969349/getting-unique-items-from-nsmutablearray
     
-    NSArray *uniqueSymbol   = [cards valueForKeyPath:@"@distinctUnionOfObjects.symbol"];
-    NSArray *uniqueCounts   = [cards valueForKeyPath:@"@distinctUnionOfObjects.count"];
-    NSArray *uniqueShadings = [cards valueForKeyPath:@"@distinctUnionOfObjects.shading"];
-    NSArray *uniqueColors   = [cards valueForKeyPath:@"@distinctUnionOfObjects.color"];
+    NSArray *uniqueSymbol = [cards valueForKeyPath:@"@distinctUnionOfObjects.symbol"];
+    NSArray *uniqueCounts = [cards valueForKeyPath:@"@distinctUnionOfObjects.count"];
+    NSArray *uniqueShades = [cards valueForKeyPath:@"@distinctUnionOfObjects.shading"];
+    NSArray *uniqueColors = [cards valueForKeyPath:@"@distinctUnionOfObjects.color"];
     
-    symbolMatch  = uniqueSymbol.count   == 1 || uniqueSymbol.count   == 3;
-    countMatch   = uniqueCounts.count   == 1 || uniqueCounts.count   == 3;
-    shadingMatch = uniqueShadings.count == 1 || uniqueShadings.count == 3;
-    colorMatch   = uniqueColors.count   == 1 || uniqueColors.count   == 3;
+    symbolMatch  = uniqueSymbol.count == 1 || uniqueSymbol.count == 3;
+    countMatch   = uniqueCounts.count == 1 || uniqueCounts.count == 3;
+    shadingMatch = uniqueShades.count == 1 || uniqueShades.count == 3;
+    colorMatch   = uniqueColors.count == 1 || uniqueColors.count == 3;
     
     if (symbolMatch && countMatch && shadingMatch && colorMatch) {
         return MATCH_SCORE;

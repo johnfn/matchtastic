@@ -48,13 +48,7 @@
         [str addAttribute:NSStrokeColorAttributeName value:card.color range:wholestring];
         [str addAttribute:NSStrokeWidthAttributeName value:@-5 range:wholestring];
         
-        if ([card.shading isEqualToString:@"Normal"]) {
-            [str addAttribute:NSForegroundColorAttributeName value:card.color range:wholestring];
-        } else if ([card.shading isEqualToString:@"Grayed"]) {
-            [str addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:wholestring];
-        } else {
-            [str addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:wholestring];
-        }
+        [str addAttribute:NSForegroundColorAttributeName value:card.shading range:wholestring];
         
         if (card.isUnplayable) {
             [cardButton setHidden:YES];

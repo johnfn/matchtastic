@@ -17,7 +17,7 @@
     if (self) {
         for (NSString *symbol in [SetCard validSymbols]) {
             for (NSNumber *count in [SetCard validCounts]) {
-                for (NSString *shading in [SetCard validShadings]) {
+                for (UIColor *shading in [SetCard validShades]) {
                     for (UIColor *color in [SetCard validColors]) {
                         SetCard *card = [[SetCard alloc] init];
                         card.count = count;
