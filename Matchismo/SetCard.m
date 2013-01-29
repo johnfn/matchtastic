@@ -19,9 +19,17 @@
     return 3;
 }
 
-- (void)setType:(NSString *)type {
-    if ([[SetCard validTypes] containsObject:type]) {
-        _type = type;
++ (NSArray *)validShadings {
+    return @[@"Someshading"];
+}
+
++ (NSArray *)validColors {
+    return @[@0xff0000, @0x00ff00, @0x0000ff];
+}
+
+- (void)setType:(NSString *)symbol {
+    if ([[SetCard validTypes] containsObject:symbol]) {
+        _symbol = symbol;
     }
 }
 
@@ -34,7 +42,7 @@
 - (NSString *)description {
     NSMutableString *result;
     for (int i = 0; i < _count; i++) {
-        [result appendString:_type];
+        [result appendString:_symbol];
     }
     
     return result;

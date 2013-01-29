@@ -7,9 +7,12 @@
 //
 
 #import "SetViewController.h"
+#import "CardMatchingGame.h"
 
 @interface SetViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *SetCards;
+
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
@@ -37,6 +40,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self updateUI];
 }
 
 - (void)didReceiveMemoryWarning
