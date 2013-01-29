@@ -11,7 +11,7 @@
 
 @implementation SetCard : Card
 
-+ (NSArray *)validTypes {
++ (NSArray *)validSymbols {
     return @[@"▲", @"●", @"■"];
 }
 
@@ -28,7 +28,7 @@
 }
 
 - (void)setType:(NSString *)symbol {
-    if ([[SetCard validTypes] containsObject:symbol]) {
+    if ([[SetCard validSymbols] containsObject:symbol]) {
         _symbol = symbol;
     }
 }

@@ -15,7 +15,7 @@
 @property (nonatomic) NSString *shading;
 @property (nonatomic) NSUInteger color;
 
-+ (NSArray *)validTypes;
++ (NSArray *)validSymbols;
 + (NSUInteger)highestCount;
 + (NSArray *)validShadings;
 + (NSArray *)validColors;
