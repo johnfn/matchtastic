@@ -15,5 +15,6 @@
 
 + (NSArray *)validTypes;
 + (NSUInteger)highestCount;
+- (NSString *)description;
 
 @end

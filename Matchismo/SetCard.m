@@ -20,15 +20,24 @@
 }
 
 - (void)setType:(NSString *)type {
-    if ([[self validTypes] containsObject:type]) {
+    if ([[SetCard validTypes] containsObject:type]) {
         _type = type;
     }
 }
 
 - (void)setCount:(NSUInteger)count {
-    if (count != 0 && count <= [self highestCount]) {
+    if (count != 0 && count <= [SetCard highestCount]) {
         _count = count;
     }
+}
+
+- (NSString *)description {
+    NSMutableString *result;
+    for (int i = 0; i < _count; i++) {
+        [result appendString:_type];
+    }
+    
+    return result;
 }
 
 @end
