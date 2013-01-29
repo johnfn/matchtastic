@@ -63,6 +63,8 @@
     
     int score = FLIP_COST;
     
+    NSLog(@"calculating score...");
+    
     if ([self faceUpCards].count != pairSize) {
         if (!card.faceUp) {
             self.lastFlipResult = [NSString stringWithFormat:@"Unflipped %@ for a score of %d", card, score];
@@ -118,7 +120,7 @@
     
     if (card.isUnplayable) return;
     
-    [self calculateScore: 3 justFlipped:card];
+    [self calculateScore: 2 justFlipped:card];
 }
 
 @end

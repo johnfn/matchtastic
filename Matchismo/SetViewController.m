@@ -69,6 +69,10 @@
     return self;
 }
 
+- (IBAction)pushCard:(UIButton *)sender {
+    [self.game flipCardAtIndex:[self.SetCards indexOfObject:sender]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
