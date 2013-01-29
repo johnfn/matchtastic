@@ -49,12 +49,10 @@
     NSArray *uniqueShadings = [cards valueForKeyPath:@"@distinctUnionOfObjects.shading"];
     NSArray *uniqueColors   = [cards valueForKeyPath:@"@distinctUnionOfObjects.color"];
     
-    symbolMatch = uniqueSymbol.count   == 1 || uniqueSymbol.count   == 3;
-    countMatch  = uniqueCounts.count   == 1 || uniqueCounts.count   == 3;
-    symbolMatch = uniqueShadings.count == 1 || uniqueShadings.count == 3;
-    symbolMatch = uniqueColors.count   == 1 || uniqueColors.count   == 3;
-    
-    NSLog(@"%d %d %d %d", uniqueSymbol.count, uniqueCounts.count, uniqueShadings.count, uniqueColors.count);
+    symbolMatch  = uniqueSymbol.count   == 1 || uniqueSymbol.count   == 3;
+    countMatch   = uniqueCounts.count   == 1 || uniqueCounts.count   == 3;
+    shadingMatch = uniqueShadings.count == 1 || uniqueShadings.count == 3;
+    colorMatch   = uniqueColors.count   == 1 || uniqueColors.count   == 3;
     
     if (symbolMatch && countMatch && shadingMatch && colorMatch) {
         return MATCH_SCORE;

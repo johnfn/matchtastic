@@ -71,7 +71,7 @@
 }
 
 - (IBAction)flipCard:(UIButton *)sender {
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender] withPairSize:2];
     ++self.flipCount;
     
     [self updateUI];

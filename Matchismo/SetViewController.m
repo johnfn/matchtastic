@@ -56,6 +56,14 @@
             [str addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:wholestring];
         }
         
+        if (card.isUnplayable) {
+            [cardButton setHidden:YES];
+        } else if (card.isFaceUp) {
+            [cardButton setBackgroundColor:[UIColor grayColor]];
+        } else {
+            [cardButton setBackgroundColor:[UIColor whiteColor]];
+        }
+        
         [cardButton setAttributedTitle:str forState:UIControlStateNormal];
     }
 }
@@ -70,7 +78,9 @@
 }
 
 - (IBAction)pushCard:(UIButton *)sender {
-    [self.game flipCardAtIndex:[self.SetCards indexOfObject:sender]];
+    [self.game flipCardAtIndex:[self.SetCards indexOfObject:sender] withPairSize:3];
+    
+    [self updateUI];
 }
 
 - (void)viewDidLoad
