@@ -36,14 +36,10 @@
 }
 
 - (void)updateUI {
-    NSLog(@"hello.......");
     for (UIButton *cardButton in self.SetCards) {
         Card *card = [self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
         
         [cardButton setTitle:card.description forState:UIControlStateNormal];
-        
-        NSLog(@"derp");
-        NSLog(@"%@", card);
     }
 }
 
