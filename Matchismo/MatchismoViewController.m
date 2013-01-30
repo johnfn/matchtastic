@@ -27,8 +27,8 @@
 - (void)updateUI {
     UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
     
-    for (UIButton *cardButton in self.cardButtons) {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
+    for (UIButton *cardButton in self.cardCollection) {
+        Card *card = [self.game cardAtIndex:[self.cardCollection indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         cardButton.selected = card.isFaceUp;
@@ -48,6 +48,7 @@
 
 - (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardCollection indexOfObject:sender] withPairSize:2];
+    [self updateUI];
     
     [super flipCard:sender];
 }
