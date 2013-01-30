@@ -16,6 +16,9 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *SetCards;
 
 @property (strong, nonatomic) CardMatchingGame *game;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (nonatomic) int flipCount;
+@property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 
 @end
 
@@ -60,6 +63,9 @@
         
         [cardButton setAttributedTitle:str forState:UIControlStateNormal];
     }
+    
+    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.game.score]];
+    [self.flipCountLabel setText:[NSString stringWithFormat:@"Flips: %d", self.flipCount]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -72,6 +78,8 @@
 }
 
 - (IBAction)pushCard:(UIButton *)sender {
+    ++_flipCount;
+    
     [self.game flipCardAtIndex:[self.SetCards indexOfObject:sender] withPairSize:3];
     
     [self updateUI];
