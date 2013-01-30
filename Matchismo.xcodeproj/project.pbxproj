@@ -10,6 +10,7 @@
 		8B1CEED416B7890E00863522 /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEED316B7890D00863522 /* SetViewController.m */; };
 		8B1CEED816B78BE800863522 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEED716B78BE800863522 /* SetCard.m */; };
 		8B1CEEDB16B78FBF00863522 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEEDA16B78FBF00863522 /* SetCardDeck.m */; };
+		8B1CEEDE16B990A300863522 /* MatchismoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEEDD16B990A200863522 /* MatchismoViewController.m */; };
 		8BEF2F7F16AE7168001ED98E /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF2F7E16AE7168001ED98E /* CardMatchingGame.m */; };
 		8BEF2F8216AFA867001ED98E /* cardback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8BEF2F8116AFA867001ED98E /* cardback.jpg */; };
 		8BF0D44A16A47DE300C63061 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF0D44916A47DE300C63061 /* UIKit.framework */; };
@@ -37,6 +38,8 @@
 		8B1CEED716B78BE800863522 /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCard.m; sourceTree = "<group>"; };
 		8B1CEED916B78FBF00863522 /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardDeck.h; sourceTree = "<group>"; };
 		8B1CEEDA16B78FBF00863522 /* SetCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardDeck.m; sourceTree = "<group>"; };
+		8B1CEEDC16B990A200863522 /* MatchismoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchismoViewController.h; sourceTree = "<group>"; };
+		8B1CEEDD16B990A200863522 /* MatchismoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchismoViewController.m; sourceTree = "<group>"; };
 		8BEF2F7D16AE7168001ED98E /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		8BEF2F7E16AE7168001ED98E /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		8BEF2F8116AFA867001ED98E /* cardback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardback.jpg; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 				8B1CEED216B7890D00863522 /* SetViewController.h */,
 				8B1CEED316B7890D00863522 /* SetViewController.m */,
 				8BF0D46816A47DE300C63061 /* CardGameViewController.m */,
+				8B1CEEDC16B990A200863522 /* MatchismoViewController.h */,
+				8B1CEEDD16B990A200863522 /* MatchismoViewController.m */,
 				8BF0D45016A47DE300C63061 /* Supporting Files */,
 			);
 			path = Matchismo;
@@ -241,6 +246,7 @@
 				8B1CEED416B7890E00863522 /* SetViewController.m in Sources */,
 				8B1CEED816B78BE800863522 /* SetCard.m in Sources */,
 				8B1CEEDB16B78FBF00863522 /* SetCardDeck.m in Sources */,
+				8B1CEEDE16B990A300863522 /* MatchismoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

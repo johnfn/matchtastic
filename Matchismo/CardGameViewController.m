@@ -14,27 +14,25 @@
 @interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flipDescription;
-@property (weak, nonatomic) IBOutlet UISwitch *gameTypeSwitch;
 
 @end
 
 @implementation CardGameViewController
 
+@synthesize game = _game;
+
 - (CardMatchingGame *)game {
-    if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                              usingDeck:[[PlayingCardDeck alloc] init]];
-        [self updateUI];
-    }
-    
     return _game;
 }
 
+- (void)setGame:(CardMatchingGame *)game {
+    _game = game;
+}
+
 - (IBAction)dealButton:(id)sender {
+    //TODO
     _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                               usingDeck:[[PlayingCardDeck alloc] init]];
     
@@ -47,22 +45,6 @@
 }
 
 - (void)updateUI {
-    UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
-    
-    for (UIButton *cardButton in self.cardButtons) {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
-        
-        [cardButton setImage:cardBackImage forState:UIControlStateSelected|UIControlStateDisabled];
-    }
-
-    self.gameTypeSwitch.enabled = !self.game.hasGameBegun;
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.flipDescription.text = self.game.lastFlipResult;
 }
 
 - (void)setFlipCount:(int)flipCount {
@@ -71,9 +53,7 @@
 }
 
 - (IBAction)flipCard:(UIButton *)sender {
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender] withPairSize:2];
     ++self.flipCount;
-    
     [self updateUI];
 }
 

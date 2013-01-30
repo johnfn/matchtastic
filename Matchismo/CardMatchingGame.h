@@ -18,8 +18,6 @@
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 
-- (void)setGameType:(bool)tripleMatch;
-
 @property (nonatomic, readonly) int score;
 @property (strong, nonatomic) NSString *lastFlipResult;
 @property (readonly, nonatomic) bool hasGameBegun;

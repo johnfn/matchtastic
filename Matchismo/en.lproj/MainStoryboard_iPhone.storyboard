@@ -394,10 +394,10 @@
             </objects>
             <point key="canvasLocation" x="-802" y="240"/>
         </scene>
-        <!--Card Game View Controller - Matchismo!-->
+        <!--Matchismo View Controller - Matchismo!-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="CardGameViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="MatchismoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -414,7 +414,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="bBk-VI-kud"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="NQB-CO-oML"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q5N-09-NjI">
@@ -436,7 +436,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="hLs-4U-Upl"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="GWQ-eA-yCc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a74-XB-sej">
@@ -451,7 +451,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="Ngq-Kc-rWJ"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="Y9M-zL-nqC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xbm-8T-9Ra">
@@ -466,7 +466,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="SnJ-ha-e36"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="a5o-Qt-RdJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VE2-rq-sXS">
@@ -481,7 +481,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="A3Z-bD-80A"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="e2u-Ez-pfh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="psa-l8-z8P">
@@ -496,7 +496,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="8Lw-UI-sNc"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="cHZ-SZ-RwJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GRE-ag-Zl6">
@@ -511,7 +511,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="OGJ-Tv-YPm"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="ua9-1D-fvU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eDH-cJ-lu4">
@@ -526,7 +526,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="928-ZS-TQu"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="ZLm-Qp-gbc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gmy-9o-a0K">
@@ -541,7 +541,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="uVk-vK-bh8"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="rRX-6h-RjJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AD1-XJ-Fj8">
@@ -556,7 +556,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="Ppx-Vb-ora"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="VUd-y5-2i8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K8i-3G-piI">
@@ -571,7 +571,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="Hdp-ZS-V7I"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="EAc-hW-VWn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FEn-pm-RiV">
@@ -586,7 +586,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="iUy-hL-gIZ"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="5Z3-iU-63W"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="62G-G8-fE0">
@@ -608,7 +608,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="LNz-Zc-CaM"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="BTc-0k-Rhk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JFI-vk-I7I">
@@ -623,7 +623,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="46e-CX-T10"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="ne8-gj-oli"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WC8-0y-NIa">
@@ -638,7 +638,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="HSO-Gq-lLZ"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="LIP-g1-4OT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pkj-uW-Y7r">
@@ -653,7 +653,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="BZF-kv-bxe"/>
+                                    <action selector="flipCard:" destination="2" eventType="touchUpInside" id="2lP-gB-QZg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to Matchismo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OGe-pT-gtX">
@@ -687,23 +687,22 @@
                         <outlet property="flipDescription" destination="OGe-pT-gtX" id="lqe-QO-5FX"/>
                         <outlet property="flipsLabel" destination="Q5N-09-NjI" id="ETx-XW-VB1"/>
                         <outlet property="scoreLabel" destination="62G-G8-fE0" id="zfr-dR-aH9"/>
-                        <outletCollection property="cardButtons" destination="IHo-Zs-4zn" id="fSb-Nj-j2R"/>
-                        <outletCollection property="cardButtons" destination="IHo-Zs-4zn" id="yvd-6O-ZoJ"/>
-                        <outletCollection property="cardButtons" destination="hxE-kz-2T9" id="ejM-Xa-3VK"/>
-                        <outletCollection property="cardButtons" destination="a74-XB-sej" id="vpA-Vr-Tdm"/>
-                        <outletCollection property="cardButtons" destination="xbm-8T-9Ra" id="eMO-8J-HQj"/>
-                        <outletCollection property="cardButtons" destination="VE2-rq-sXS" id="38H-fV-mLA"/>
-                        <outletCollection property="cardButtons" destination="psa-l8-z8P" id="cdZ-N5-6Im"/>
-                        <outletCollection property="cardButtons" destination="GRE-ag-Zl6" id="S8c-Je-j5d"/>
-                        <outletCollection property="cardButtons" destination="eDH-cJ-lu4" id="KSz-8I-HpO"/>
-                        <outletCollection property="cardButtons" destination="Gmy-9o-a0K" id="O18-xc-WKS"/>
-                        <outletCollection property="cardButtons" destination="AD1-XJ-Fj8" id="thD-Dx-Ghv"/>
-                        <outletCollection property="cardButtons" destination="K8i-3G-piI" id="7b0-tu-voz"/>
-                        <outletCollection property="cardButtons" destination="FEn-pm-RiV" id="Ato-fs-MpF"/>
-                        <outletCollection property="cardButtons" destination="fWc-zd-5E4" id="4nX-9g-vsf"/>
-                        <outletCollection property="cardButtons" destination="JFI-vk-I7I" id="Ix1-n2-Do5"/>
-                        <outletCollection property="cardButtons" destination="WC8-0y-NIa" id="wZO-RY-X43"/>
-                        <outletCollection property="cardButtons" destination="pkj-uW-Y7r" id="cpX-Id-zAK"/>
+                        <outletCollection property="cardCollection" destination="IHo-Zs-4zn" id="ZMi-Nu-A23"/>
+                        <outletCollection property="cardCollection" destination="hxE-kz-2T9" id="cDo-HO-4Se"/>
+                        <outletCollection property="cardCollection" destination="a74-XB-sej" id="xHv-FR-L9i"/>
+                        <outletCollection property="cardCollection" destination="xbm-8T-9Ra" id="F6k-Dr-xA2"/>
+                        <outletCollection property="cardCollection" destination="eDH-cJ-lu4" id="OaV-ab-Din"/>
+                        <outletCollection property="cardCollection" destination="GRE-ag-Zl6" id="tUk-UQ-b0k"/>
+                        <outletCollection property="cardCollection" destination="psa-l8-z8P" id="mSm-eD-UWV"/>
+                        <outletCollection property="cardCollection" destination="VE2-rq-sXS" id="2Oj-2d-uwS"/>
+                        <outletCollection property="cardCollection" destination="FEn-pm-RiV" id="LLr-bW-Kei"/>
+                        <outletCollection property="cardCollection" destination="K8i-3G-piI" id="Bmm-6H-bnq"/>
+                        <outletCollection property="cardCollection" destination="AD1-XJ-Fj8" id="iTs-vt-c5m"/>
+                        <outletCollection property="cardCollection" destination="Gmy-9o-a0K" id="Nta-SH-Wjc"/>
+                        <outletCollection property="cardCollection" destination="pkj-uW-Y7r" id="MxY-dG-ahz"/>
+                        <outletCollection property="cardCollection" destination="WC8-0y-NIa" id="GFb-7w-Pn4"/>
+                        <outletCollection property="cardCollection" destination="JFI-vk-I7I" id="ScH-fq-fbM"/>
+                        <outletCollection property="cardCollection" destination="fWc-zd-5E4" id="iN6-Rt-eMk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -719,9 +718,15 @@
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipDescription" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gameTypeSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MatchismoViewController" superclassName="CardGameViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchismoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="outletCollection" name="cardCollection" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SetViewController" superclassName="UIViewController">
