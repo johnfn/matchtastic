@@ -39,11 +39,7 @@
         [cardButton setImage:cardBackImage forState:UIControlStateSelected|UIControlStateDisabled];
     }
 
-    /*
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    */ 
-     
-    //[super updateUI];
+    [super updateUI];
 }
 
 - (IBAction)dealButton:(id)sender {
