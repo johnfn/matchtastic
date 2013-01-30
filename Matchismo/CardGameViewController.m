@@ -31,19 +31,6 @@
     _game = game;
 }
 
-- (IBAction)dealButton:(id)sender {
-    //TODO
-    _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                              usingDeck:[[PlayingCardDeck alloc] init]];
-    
-    [self updateUI];
-}
-
-- (void)setCardButtons:(NSArray *)cardButtons {
-    _cardButtons = cardButtons;
-    [self updateUI];
-}
-
 - (void)updateUI {
 }
 

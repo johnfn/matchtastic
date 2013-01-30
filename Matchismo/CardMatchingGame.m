@@ -12,6 +12,7 @@
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (nonatomic) int score;
 @property (readwrite, nonatomic) bool hasGameBegun;
+@property (strong, nonatomic) Deck *deck;
 @end
 
 @implementation CardMatchingGame
@@ -32,6 +33,8 @@
             
             self.cards[i] = card;
         }
+        
+        self.deck = deck;
     }
     
     return self;

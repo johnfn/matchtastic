@@ -11,6 +11,7 @@
 
 @interface MatchismoViewController()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardCollection;
+@property (weak, nonatomic) IBOutlet UIButton *dealButton;
 
 @end
 
@@ -40,10 +41,15 @@
 
     /*
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.flipDescription.text = self.game.lastFlipResult;
     */ 
      
     //[super updateUI];
+}
+
+- (IBAction)dealButton:(id)sender {
+    super.game = [[CardMatchingGame alloc] initWithCardCount:self.cardCollection.count usingDeck:[[PlayingCardDeck alloc] init]];
+    
+    [self updateUI];
 }
 
 - (IBAction)flipCard:(UIButton *)sender {

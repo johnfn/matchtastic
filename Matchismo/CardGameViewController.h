@@ -14,7 +14,6 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 
 - (void)updateUI;
-- (IBAction)flipCard:(UIButton *)sender; //abstract
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+- (IBAction)flipCard:(UIButton *)sender;
 
 @end
