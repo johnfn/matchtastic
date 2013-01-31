@@ -341,6 +341,13 @@
                                     <action selector="dealButton:" destination="zz7-XA-xwl" eventType="touchUpInside" id="kDe-TU-XwY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to Set!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Glo-kr-BT7">
+                                <rect key="frame" x="9" y="324" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -711,36 +718,6 @@
             <point key="canvasLocation" x="-246" y="-60"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CardGameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flipDescription" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MatchismoViewController" superclassName="CardGameViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchismoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dealButton:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dealButton" candidateClass="UIButton"/>
-                <relationship kind="outletCollection" name="cardCollection" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SetViewController" superclassName="CardGameViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dealButton:"/>
-                <relationship kind="action" name="pushCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flipCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="SetCards" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -67,6 +67,24 @@
     }
 }
 
+- (void)setShading:(UIColor *)shading {
+    if ([[SetCard validShades] containsObject:shading]) {
+        if (shading == [UIColor blackColor]) {
+            // A black shade indicates that this object has the same inner shade as
+            // the outer color. Note that it's necessary to set the outer color first.
+            _shading = _color;
+        } else {
+            _shading = shading;
+        }
+    }
+}
+
+- (void)setColor:(UIColor *)color {
+    if ([[SetCard validColors] containsObject:color]) {
+        _color = color;
+    }
+}
+
 - (void)setCount:(NSNumber *)count {
     if ([[SetCard validCounts] containsObject:count]) {
         _count = count;

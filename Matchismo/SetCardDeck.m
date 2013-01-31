@@ -22,8 +22,8 @@
                         SetCard *card = [[SetCard alloc] init];
                         card.count = count;
                         card.symbol = symbol;
-                        card.shading = shading;
                         card.color = color;
+                        card.shading = shading;
                         
                         [self addCard:card atTop:YES];
                     }
