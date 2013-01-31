@@ -39,6 +39,11 @@
     return super.game;
 }
 
+- (IBAction)dealButton:(id)sender {
+    super.game = nil; // cause the lazy-loading to be fired again.
+    [self updateUI];
+}
+
 - (void)updateUI {
     for (UIButton *cardButton in self.SetCards) {
         SetCard *card = (SetCard *)[self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
@@ -55,10 +60,14 @@
         
         if (card.isUnplayable) {
             [cardButton setHidden:YES];
-        } else if (card.isFaceUp) {
-            [cardButton setBackgroundColor:[UIColor grayColor]];
         } else {
-            [cardButton setBackgroundColor:[UIColor whiteColor]];
+            [cardButton setHidden:NO];
+            
+            if (card.isFaceUp) {
+                [cardButton setBackgroundColor:[UIColor grayColor]];
+            } else {
+                [cardButton setBackgroundColor:[UIColor whiteColor]];
+            }
         }
         
         [cardButton setAttributedTitle:str forState:UIControlStateNormal];
@@ -72,6 +81,7 @@
     
     [self.game flipCardAtIndex:[self.SetCards indexOfObject:sender] withPairSize:3];
     
+    [super flipCard:sender];
     [self updateUI];
 }
 

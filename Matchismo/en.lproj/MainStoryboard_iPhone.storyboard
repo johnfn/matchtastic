@@ -337,6 +337,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dealButton:" destination="zz7-XA-xwl" eventType="touchUpInside" id="kDe-TU-XwY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -727,9 +730,10 @@
                 <relationship kind="outletCollection" name="cardCollection" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="SetViewController" superclassName="UIViewController">
+        <class className="SetViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetViewController.h"/>
             <relationships>
+                <relationship kind="action" name="dealButton:"/>
                 <relationship kind="action" name="pushCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>

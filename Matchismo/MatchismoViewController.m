@@ -50,8 +50,8 @@
 
 - (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardCollection indexOfObject:sender] withPairSize:2];
-    [self updateUI];
     
     [super flipCard:sender];
+    [self updateUI];
 }
 @end
