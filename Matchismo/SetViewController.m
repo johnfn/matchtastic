@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 
 @end
 
@@ -44,19 +45,22 @@
     [self updateUI];
 }
 
+- (NSMutableAttributedString *)renderText:(SetCard *)card {
+    NSString *contents = card.description;
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:contents];
+    NSRange wholestring = NSMakeRange(0, contents.length);
+    
+    [str addAttribute:NSStrokeColorAttributeName value:card.color range:wholestring];
+    [str addAttribute:NSStrokeWidthAttributeName value:@-5 range:wholestring];
+    
+    [str addAttribute:NSForegroundColorAttributeName value:card.shading range:wholestring];
+    
+    return str;
+}
+
 - (void)updateUI {
     for (UIButton *cardButton in self.SetCards) {
         SetCard *card = (SetCard *)[self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
-        
-        NSString *contents = card.description;
-        NSRange wholestring = NSMakeRange(0, contents.length);
-        
-        [cardButton setTitle:contents forState:UIControlStateNormal];
-        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:contents];
-        [str addAttribute:NSStrokeColorAttributeName value:card.color range:wholestring];
-        [str addAttribute:NSStrokeWidthAttributeName value:@-5 range:wholestring];
-        
-        [str addAttribute:NSForegroundColorAttributeName value:card.shading range:wholestring];
         
         if (card.isUnplayable) {
             [cardButton setHidden:YES];
@@ -70,7 +74,35 @@
             }
         }
         
-        [cardButton setAttributedTitle:str forState:UIControlStateNormal];
+        [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
+    }
+    
+    if (self.game.lastPlayedCards.count) {
+        NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played: "];
+        int i = 0;
+        
+        for (SetCard *card in self.game.lastPlayedCards) {
+            [gameStatus appendAttributedString:[self renderText:card]];
+            
+            // Append commas unless it's the last one
+            if (i != self.game.lastPlayedCards.count - 1) {
+                [gameStatus appendAttributedString:[[NSAttributedString alloc] initWithString:@", "]];
+            }
+            
+            ++i;
+        }
+        
+        NSString *endOfStatus;
+        
+        if (self.game.lastScore > 0) {
+            endOfStatus = [NSString stringWithFormat:@" for %d points!", self.game.lastScore];
+        } else {
+            endOfStatus = [NSString stringWithFormat:@" losing %d points.", self.game.lastScore];
+        }
+        
+        [gameStatus appendAttributedString:[[NSMutableAttributedString alloc] initWithString:endOfStatus]];
+    
+        self.welcomeLabel.attributedText = gameStatus;
     }
     
     [super updateUI];

@@ -13,6 +13,9 @@
 @property (nonatomic) int score;
 @property (readwrite, nonatomic) bool hasGameBegun;
 @property (strong, nonatomic) Deck *deck;
+
+@property (readwrite, strong, nonatomic) NSArray *lastPlayedCards;
+@property (readwrite, nonatomic) int lastScore;
 @end
 
 @implementation CardMatchingGame
@@ -61,7 +64,6 @@
 #define MATCH_BONUS 4
 
 - (void)calculateScore:(NSUInteger)pairSize justFlipped:(Card *)card {
-    self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@", card];
     card.faceUp = !card.faceUp;
     
     int score = FLIP_COST;
@@ -70,7 +72,8 @@
     
     if ([self faceUpCards].count != pairSize) {
         if (!card.faceUp) {
-            self.lastFlipResult = [NSString stringWithFormat:@"Unflipped %@ for a score of %d", card, score];
+            self.lastPlayedCards = @[card];
+            self.lastScore = score;
             self.score += score;
         }
         
@@ -89,7 +92,8 @@
     
     self.score += score;
     
-    self.lastFlipResult = [NSString stringWithFormat:@"Flipped %@ for a score of %d", card, score];
+    self.lastPlayedCards = [self faceUpCards];
+    self.lastScore = score;
     
     if (scoreMultiplier > 0) {
         for (Card *matchedCard in [self faceUpCards]) {
@@ -103,7 +107,6 @@
         
         card.faceUp = true;
     }
-    
 }
 
 - (void)flipCardAtIndex:(NSUInteger)index withPairSize:(NSUInteger)size {

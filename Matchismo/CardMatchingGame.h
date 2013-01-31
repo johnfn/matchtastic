@@ -19,6 +19,8 @@
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) int score;
-@property (strong, nonatomic) NSString *lastFlipResult;
 @property (readonly, nonatomic) bool hasGameBegun;
+
+@property (readonly, strong, nonatomic) NSArray *lastPlayedCards;
+@property (readonly, nonatomic) int lastScore;
 @end
