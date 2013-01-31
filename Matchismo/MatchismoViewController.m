@@ -12,6 +12,7 @@
 @interface MatchismoViewController()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardCollection;
 @property (weak, nonatomic) IBOutlet UIButton *dealButton;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end
 
@@ -37,6 +38,30 @@
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
         
         [cardButton setImage:cardBackImage forState:UIControlStateSelected|UIControlStateDisabled];
+    }
+    
+    if (self.game.lastScore) {
+        NSMutableString *statusString = [[NSMutableString alloc] init];
+        
+        [statusString appendString:@"You played "];
+        
+        int i = 0;
+        
+        for (Card *card in self.game.lastPlayedCards) {
+            [statusString appendString:card.description];
+            if (i != self.game.lastPlayedCards.count - 1) {
+                [statusString appendString:@","];
+            }
+            i++;
+        }
+        
+        if (self.game.lastScore > 0) {
+            [statusString appendString:[NSString stringWithFormat:@"gaining %d points!", self.game.lastScore]];
+        } else {
+            [statusString appendString:[NSString stringWithFormat:@"losing %d points.", self.game.lastScore]];
+        }
+        
+        [self.statusLabel setText:statusString];
     }
 
     [super updateUI];
