@@ -30,13 +30,13 @@
 }
 
 - (CardMatchingGame *)game {
-    if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:self.SetCards.count
+    if (!super.game) {
+        super.game = [[CardMatchingGame alloc] initWithCardCount:self.SetCards.count
                                                   usingDeck:[[SetCardDeck alloc] init]];
         [self updateUI];
     }
     
-    return _game;
+    return super.game;
 }
 
 - (void)updateUI {
@@ -64,17 +64,7 @@
         [cardButton setAttributedTitle:str forState:UIControlStateNormal];
     }
     
-    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.game.score]];
-    [self.flipCountLabel setText:[NSString stringWithFormat:@"Flips: %d", self.flipCount]];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super updateUI];
 }
 
 - (IBAction)pushCard:(UIButton *)sender {
