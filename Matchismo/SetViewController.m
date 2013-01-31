@@ -76,6 +76,12 @@
     [super updateUI];
 }
 
+- (void)viewDidLoad {
+    [self updateUI];
+
+    [super viewDidLoad];
+}
+
 - (IBAction)pushCard:(UIButton *)sender {
     ++_flipCount;
     
