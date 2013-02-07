@@ -47,6 +47,22 @@
     return self;
 }
 
+- (bool)dealMoreCards:(NSUInteger)numCards {
+    for (int i = 0; i < numCards; i++) {
+        Card *card = [self.deck drawRandomCard];
+        
+        if (card == nil) {
+            return false;
+        } else {
+            [self.cards addObject:card];
+        }
+        
+        NSLog(@"%d", self.cards.count);
+    }
+    
+    return true;
+}
+
 - (Card *)cardAtIndex:(NSUInteger)index {
     return (index < self.cards.count) ? self.cards[index] : nil;
 }

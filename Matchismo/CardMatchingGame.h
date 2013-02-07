@@ -18,6 +18,8 @@
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 
+- (bool)dealMoreCards:(NSUInteger)numCards;
+
 @property (nonatomic, readonly) int score;
 @property (readonly, nonatomic) bool hasGameBegun;
 @property (readonly, nonatomic) int numCards;

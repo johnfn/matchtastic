@@ -360,7 +360,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="dealButton:" destination="zz7-XA-xwl" eventType="touchUpInside" id="d8s-Df-BbU"/>
+                                    <action selector="threeMoreButton:" destination="zz7-XA-xwl" eventType="touchUpInside" id="6eF-9G-IXr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -760,6 +760,7 @@
             <relationships>
                 <relationship kind="action" name="dealButton:"/>
                 <relationship kind="action" name="pushCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="threeMoreButton:"/>
                 <relationship kind="outlet" name="flipCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>

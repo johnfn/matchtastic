@@ -25,6 +25,8 @@
 
 @implementation SetViewController
 
+#define CARDS_TO_DEAL 3
+
 - (void)setCardButtons:(NSArray *)setCards {
     _SetCards = setCards;
     [self updateUI];
@@ -42,6 +44,11 @@
 
 - (IBAction)dealButton:(id)sender {
     super.game = nil; // cause the lazy-loading to be fired again.
+    [self updateUI];
+}
+
+- (IBAction)threeMoreButton:(id)sender {
+    [self.game dealMoreCards:CARDS_TO_DEAL];
     [self updateUI];
 }
 
@@ -78,7 +85,6 @@
             }
             
             [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
-            [cardButton setHidden:NO];
         } else {
             [cardButton setHidden:YES];
         }
