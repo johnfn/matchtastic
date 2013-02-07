@@ -71,12 +71,12 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="RDD-Ku-Gfg" customClass="SetCardView">
-                                <rect key="frame" x="71" y="166" width="178" height="79"/>
+                                <rect key="frame" x="65" y="246" width="178" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to Set!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Glo-kr-BT7">
-                                <rect key="frame" x="20" y="279" width="280" height="30"/>
+                                <rect key="frame" x="19" y="321" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetCardView : UICollectionViewCell
+@interface SetCardView : UIView
 
-@property (nonatomic) UIColor *color;
+//@property (nonatomic) UIColor *color;
 @property (nonatomic) int count;
 @property (nonatomic) UIColor *shading;
 @property (nonatomic) NSString *symbol;

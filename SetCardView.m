@@ -16,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self setBackgroundColor:[UIColor redColor]];
         [self setOpaque:NO];
     }
     return self;
@@ -23,21 +24,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"sup...");
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    NSLog(@"%@", context);
-    
-    CGContextSetFillColorWithColor(context, [[UIColor redColor] CGColor]);
-    CGContextFillRect(context, self.bounds);
-    
-    CGContextClearRect(context, rect);
-    CGContextStrokeEllipseInRect(context, CGRectMake(25, 25, 175, 175));
-    CGContextSetFillColor(context, CGColorGetComponents([[UIColor blueColor] CGColor]));
-    CGContextEOFillPath(context);
-    
-    // Drawing code
+    [[UIColor orangeColor] setFill];
+    [[UIBezierPath bezierPathWithOvalInRect:rect] fill];
 }
 
 @end
