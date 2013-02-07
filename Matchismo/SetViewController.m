@@ -20,6 +20,7 @@
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -118,6 +119,11 @@
         self.welcomeLabel.attributedText = gameStatus;
     }
     
+    // Properly size the ScrollView.
+    UIButton *bottommostButton = (UIButton *)[self.SetCards objectAtIndex:self.SetCards.count - 1];
+    int lengthOfScrollview = [bottommostButton frame].origin.y + [bottommostButton frame].size.height;
+    [self.scrollView setContentSize:CGSizeMake(320, lengthOfScrollview)];
+    
     [super updateUI];
 }
 
@@ -140,6 +146,7 @@
         }
     }];
 
+    [self.scrollView setContentSize:CGSizeMake(320, 500)];
     [self updateUI];
     
     [super viewDidLoad];
