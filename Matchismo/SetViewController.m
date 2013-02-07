@@ -59,22 +59,29 @@
 }
 
 - (void)updateUI {
-    for (UIButton *cardButton in self.SetCards) {
-        SetCard *card = (SetCard *)[self.game cardAtIndex:[self.SetCards indexOfObject:cardButton]];
+    for (int i = 0; i < self.SetCards.count; i++) {
+        UIButton *cardButton = [self.SetCards objectAtIndex:i];
         
-        if (card.isUnplayable) {
-            [cardButton setHidden:YES];
-        } else {
-            [cardButton setHidden:NO];
+        if (i < self.game.numCards) {
+            SetCard *card = (SetCard *)[self.game cardAtIndex:i];
             
-            if (card.isFaceUp) {
-                [cardButton setBackgroundColor:[UIColor grayColor]];
+            if (card.isUnplayable) {
+                [cardButton setHidden:YES];
             } else {
-                [cardButton setBackgroundColor:[UIColor whiteColor]];
+                [cardButton setHidden:NO];
+                
+                if (card.isFaceUp) {
+                    [cardButton setBackgroundColor:[UIColor grayColor]];
+                } else {
+                    [cardButton setBackgroundColor:[UIColor whiteColor]];
+                }
             }
+            
+            [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
+        } else {
+            NSLog(@"%d", i);
+            [cardButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@""] forState:UIControlStateNormal];
         }
-        
-        [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
     }
     
     if (self.game.lastPlayedCards.count) {
@@ -109,8 +116,26 @@
 }
 
 - (void)viewDidLoad {
-    [self updateUI];
+    // The concept of ordering the buttons based on their position was found on StackOverflow:
+    // http://stackoverflow.com/questions/6527762/iboutletcollection-set-ordering-in-interface-builder
+    
+    // Order the labels based on their y position
+    self.SetCards = [self.SetCards sortedArrayUsingComparator:^NSComparisonResult(id button1, id button2) {
+        if ([button1 frame].origin.y < [button2 frame].origin.y) {
+            return NSOrderedAscending;
+        } else if ([button1 frame].origin.y > [button2 frame].origin.y) {
+            return NSOrderedDescending;
+        } else {
+            if ([button1 frame].origin.x < [button2 frame].origin.x) {
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedDescending;
+            }
+        }
+    }];
 
+    [self updateUI];
+    
     [super viewDidLoad];
 }
 

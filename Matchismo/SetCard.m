@@ -36,6 +36,8 @@
     // because you'd only really want to do that if you planned to later add more attributes to
     // a set card, and I don't see that happening.
     
+    return true;
+    
     bool symbolMatch  = false;
     bool countMatch   = false;
     bool shadingMatch = false;

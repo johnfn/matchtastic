@@ -25,6 +25,10 @@
     return _cards;
 }
 
+- (int)numCards {
+    return self.cards.count;
+}
+
 - (id) initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck {
     self = [super init];
     
@@ -63,12 +67,10 @@
 #define MISMATCH_PENALTY -2
 #define MATCH_BONUS 4
 
-- (void)calculateScore:(NSUInteger)pairSize justFlipped:(Card *)card {
+- (void)calculateScore:(NSUInteger)pairSize justFlipped:(Card *)card removeCards:(bool)shouldRemoveCards {
     card.faceUp = !card.faceUp;
     
     int score = FLIP_COST;
-    
-    NSLog(@"%d", pairSize);
     
     if ([self faceUpCards].count != pairSize) {
         if (!card.faceUp) {
@@ -97,6 +99,10 @@
     
     if (scoreMultiplier > 0) {
         for (Card *matchedCard in [self faceUpCards]) {
+            if (shouldRemoveCards) {
+                [self.cards removeObject:matchedCard];
+            }
+            
             matchedCard.unplayable = true;
         }
     
@@ -116,7 +122,7 @@
     
     if (card.isUnplayable) return;
     
-    [self calculateScore:size justFlipped:card];
+    [self calculateScore:size justFlipped:card removeCards:(size == 3)];
 }
 
 @end
