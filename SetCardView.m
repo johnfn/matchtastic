@@ -69,17 +69,24 @@
     int symbolWidth = rect.size.width - offset * 2;
     int symbolHeight = rect.size.height / 6;
     
-    // Diamond
-    if (symbol == @"▲") {
-        NSLog(@"!");
+    // Oval
+    if (symbol == @"●") {
         CGRect dest = CGRectMake(x - symbolWidth / 2, y - symbolHeight / 2, symbolWidth, symbolHeight);
-        NSLog(@"Dest: %f %f %f %f", dest.origin.x, dest.origin.y, dest.size.width, dest.size.height);
         [[UIBezierPath bezierPathWithOvalInRect:dest] fill];
     }
     
-    // Oval
-    if (symbol == @"●") {
-        
+    // Diamond
+    if (symbol == @"▲") {
+        UIBezierPath *path = [[UIBezierPath alloc] init];
+        [path moveToPoint   :CGPointMake(x, y - symbolHeight / 2)];
+        [path addLineToPoint:CGPointMake(x - symbolWidth / 2, y)];
+        [path addLineToPoint:CGPointMake(x, y + symbolHeight / 2)];
+        [path addLineToPoint:CGPointMake(x + symbolWidth / 2, y)];
+        [path closePath];
+        [self.color setFill];
+        [self.color setStroke];
+        [path fill];
+        [path stroke];
     }
     
     // Squiggly
