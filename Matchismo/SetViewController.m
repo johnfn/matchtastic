@@ -78,9 +78,9 @@
             }
             
             [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
+            [cardButton setHidden:NO];
         } else {
-            NSLog(@"%d", i);
-            [cardButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@""] forState:UIControlStateNormal];
+            [cardButton setHidden:YES];
         }
     }
     
