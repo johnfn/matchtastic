@@ -11,6 +11,8 @@
 		8B1CEED816B78BE800863522 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEED716B78BE800863522 /* SetCard.m */; };
 		8B1CEEDB16B78FBF00863522 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEEDA16B78FBF00863522 /* SetCardDeck.m */; };
 		8B1CEEDE16B990A300863522 /* MatchismoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEEDD16B990A200863522 /* MatchismoViewController.m */; };
+		8B99B6B316C35DC1002D9BB0 /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B99B6B216C35DC1002D9BB0 /* SetCardView.m */; };
+		8B99B6BD16C376C5002D9BB0 /* SetCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B99B6BC16C376C5002D9BB0 /* SetCardCollectionViewCell.m */; };
 		8BEF2F7F16AE7168001ED98E /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF2F7E16AE7168001ED98E /* CardMatchingGame.m */; };
 		8BEF2F8216AFA867001ED98E /* cardback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8BEF2F8116AFA867001ED98E /* cardback.jpg */; };
 		8BF0D44A16A47DE300C63061 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF0D44916A47DE300C63061 /* UIKit.framework */; };
@@ -40,6 +42,10 @@
 		8B1CEEDA16B78FBF00863522 /* SetCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardDeck.m; sourceTree = "<group>"; };
 		8B1CEEDC16B990A200863522 /* MatchismoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchismoViewController.h; sourceTree = "<group>"; };
 		8B1CEEDD16B990A200863522 /* MatchismoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchismoViewController.m; sourceTree = "<group>"; };
+		8B99B6B116C35DC1002D9BB0 /* SetCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCardView.h; path = ../SetCardView.h; sourceTree = "<group>"; };
+		8B99B6B216C35DC1002D9BB0 /* SetCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCardView.m; path = ../SetCardView.m; sourceTree = "<group>"; };
+		8B99B6BB16C376C5002D9BB0 /* SetCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardCollectionViewCell.h; sourceTree = "<group>"; };
+		8B99B6BC16C376C5002D9BB0 /* SetCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardCollectionViewCell.m; sourceTree = "<group>"; };
 		8BEF2F7D16AE7168001ED98E /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		8BEF2F7E16AE7168001ED98E /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		8BEF2F8116AFA867001ED98E /* cardback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardback.jpg; sourceTree = "<group>"; };
@@ -114,9 +120,13 @@
 		8BF0D44F16A47DE300C63061 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				8B99B6B116C35DC1002D9BB0 /* SetCardView.h */,
+				8B99B6B216C35DC1002D9BB0 /* SetCardView.m */,
 				8BF0D45816A47DE300C63061 /* CardGameAppDelegate.h */,
 				8BF0D45916A47DE300C63061 /* CardGameAppDelegate.m */,
 				8BF0D46116A47DE300C63061 /* MainStoryboard_iPhone.storyboard */,
+				8B99B6BB16C376C5002D9BB0 /* SetCardCollectionViewCell.h */,
+				8B99B6BC16C376C5002D9BB0 /* SetCardCollectionViewCell.m */,
 				8BEF2F8116AFA867001ED98E /* cardback.jpg */,
 				8BF0D47216A4898300C63061 /* Model */,
 				8BF0D46416A47DE300C63061 /* MainStoryboard_iPad.storyboard */,
@@ -247,6 +257,8 @@
 				8B1CEED816B78BE800863522 /* SetCard.m in Sources */,
 				8B1CEEDB16B78FBF00863522 /* SetCardDeck.m in Sources */,
 				8B1CEEDE16B990A300863522 /* MatchismoViewController.m in Sources */,
+				8B99B6B316C35DC1002D9BB0 /* SetCardView.m in Sources */,
+				8B99B6BD16C376C5002D9BB0 /* SetCardCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,17 +10,16 @@
 #import "CardMatchingGame.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "SetCardView.h"
 
-@interface SetViewController ()
-//TODO - rename
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *SetCards;
+@interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 @end
 
@@ -28,19 +27,41 @@
 
 #define CARDS_TO_DEAL 3
 
-- (void)setCardButtons:(NSArray *)setCards {
-    _SetCards = setCards;
-    [self updateUI];
-}
-
 - (CardMatchingGame *)game {
     if (!super.game) {
-        super.game = [[CardMatchingGame alloc] initWithCardCount:self.SetCards.count
-                                                  usingDeck:[[SetCardDeck alloc] init]];
+        //TODO - 20 hardcode
+        super.game = [[CardMatchingGame alloc] initWithCardCount:20 usingDeck:[[SetCardDeck alloc] init]];
         [self updateUI];
     }
     
     return super.game;
+}
+
+- (void)setCardCollectionView:(UICollectionView *)cardCollectionView
+{
+    _cardCollectionView = cardCollectionView;
+    _cardCollectionView.dataSource = self; // must implement UICollectionViewDataSource!
+    _cardCollectionView.delegate = self; // must implement UICollectionViewDelegate!
+}
+
+- (NSInteger)collectionView:(UICollectionView *)asker
+     numberOfItemsInSection:(NSInteger)section
+{
+    //TODO
+    return 20;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)asker
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [self.cardCollectionView
+                                  dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
+    if ([cell isKindOfClass:[SetCardView class]]) {
+        SetCardView *scv = (SetCardView *)cell;
+        scv.count = 2;
+    }
+    
+    return cell;
 }
 
 - (IBAction)dealButton:(id)sender {
@@ -67,7 +88,8 @@
 }
 
 - (void)updateUI {
-    for (int i = 0; i < self.SetCards.count; i++) {
+    /*
+    for (int i = 0; i < self.game.numCards; i++) {
         UIButton *cardButton = [self.SetCards objectAtIndex:i];
         
         if (i < self.game.numCards) {
@@ -77,7 +99,7 @@
                 [cardButton setHidden:YES];
             } else {
                 [cardButton setHidden:NO];
-                
+
                 if (card.isFaceUp) {
                     [cardButton setBackgroundColor:[UIColor grayColor]];
                 } else {
@@ -86,10 +108,12 @@
             }
             
             [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
+            [cardButton setHidden:NO];
         } else {
             [cardButton setHidden:YES];
         }
     }
+     */
     
     if (self.game.lastPlayedCards.count) {
         NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played: "];
@@ -119,11 +143,6 @@
         self.welcomeLabel.attributedText = gameStatus;
     }
     
-    // Properly size the ScrollView.
-    UIButton *bottommostButton = (UIButton *)[self.SetCards objectAtIndex:self.SetCards.count - 1];
-    int lengthOfScrollview = [bottommostButton frame].origin.y + [bottommostButton frame].size.height;
-    [self.scrollView setContentSize:CGSizeMake(320, lengthOfScrollview)];
-    
     [super updateUI];
 }
 
@@ -132,6 +151,7 @@
     // http://stackoverflow.com/questions/6527762/iboutletcollection-set-ordering-in-interface-builder
     
     // Order the labels based on their y position
+    /*
     self.SetCards = [self.SetCards sortedArrayUsingComparator:^NSComparisonResult(id button1, id button2) {
         if ([button1 frame].origin.y < [button2 frame].origin.y) {
             return NSOrderedAscending;
@@ -145,8 +165,9 @@
             }
         }
     }];
+     */
 
-    [self.scrollView setContentSize:CGSizeMake(320, 500)];
+    //[self.scrollView setContentSize:CGSizeMake(320, 500)];
     [self updateUI];
     
     [super viewDidLoad];
@@ -155,7 +176,8 @@
 - (IBAction)pushCard:(UIButton *)sender {
     ++_flipCount;
     
-    [self.game flipCardAtIndex:[self.SetCards indexOfObject:sender] withPairSize:3];
+    NSLog(@"TODO");
+    //[self.game flipCardAtIndex:[self.SetCards indexOfObject:sender] withPairSize:3];
     
     [super flipCard:sender];
     [self updateUI];
