@@ -66,9 +66,13 @@
 
 // The concept for the following two functions were found with modifications from StackOverflow:
 // http://stackoverflow.com/questions/2373028/could-someone-please-show-me-how-to-create-a-cgpattern-that-i-can-use-to-stroke
+
+// Make a diagonal line pattern.
 void pattern2Callback (void *info, CGContextRef context) {
+    UIColor *color = (__bridge UIColor *)info;
+    
     UIGraphicsPushContext(context);
-    [[UIColor redColor] setStroke];
+    [color setStroke];
     for (int i = 0; i < 20; i += 5) {
         UIBezierPath *path = [[UIBezierPath alloc] init];
         [path moveToPoint:CGPointMake(0, i)];
@@ -78,6 +82,7 @@ void pattern2Callback (void *info, CGContextRef context) {
     UIGraphicsPopContext();
 }
 
+// Set the fill to be the diagonal line pattern.
 - (void)patternMake2:(CGRect)rect context:(CGContextRef)context
 {
     static const CGPatternCallbacks callbacks = { 0, &pattern2Callback, NULL };
@@ -86,18 +91,16 @@ void pattern2Callback (void *info, CGContextRef context) {
     CGContextSetFillColorSpace(context, patternSpace);
     CGColorSpaceRelease(patternSpace);
     CGSize patternSize = CGSizeMake(10, 10);
-    CGPatternRef pattern = CGPatternCreate(NULL, self.bounds, CGAffineTransformIdentity, patternSize.width, patternSize.height, kCGPatternTilingConstantSpacing, true, &callbacks);
+    CGPatternRef pattern = CGPatternCreate((__bridge void *)(self.color), self.bounds, CGAffineTransformIdentity, patternSize.width, patternSize.height, kCGPatternTilingConstantSpacing, true, &callbacks);
     CGFloat alpha = 1;
     CGContextSetFillPattern(context, pattern, &alpha);
     CGPatternRelease(pattern);
-    //CGContextFillRect(context, rect);
-    //CGContextRestoreGState(context);
 }
 
 - (void)drawSymbol:(NSString *)symbol inRect:(CGRect)rect atX:(int)x atY:(int)y {
     int offset = rect.size.width / 10;
     int symbolWidth = rect.size.width - offset * 2;
-    int symbolHeight = rect.size.height / 6;
+    int symbolHeight = rect.size.height / 4;
     
     // Oval
     if (symbol == @"●") {
