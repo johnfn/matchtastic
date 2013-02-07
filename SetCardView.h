@@ -12,7 +12,7 @@
 
 @property (nonatomic) UIColor *color;
 @property (nonatomic) NSNumber *count;
-@property (nonatomic) UIColor *shading;
+@property (nonatomic) NSNumber *shading;
 @property (nonatomic) NSString *symbol;
 
 @end

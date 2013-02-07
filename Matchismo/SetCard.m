@@ -20,7 +20,7 @@
 }
 
 + (NSArray *)validShades {
-    return @[[UIColor blackColor], [UIColor grayColor], [UIColor whiteColor]];
+    return @[@0, @1, @2];
 }
 
 + (NSArray *)validColors {

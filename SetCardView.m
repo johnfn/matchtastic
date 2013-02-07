@@ -22,7 +22,7 @@
     _count = count;
 }
 
-- (void)setShading:(UIColor *)shading {
+- (void)setShading:(NSNumber *)shading {
     [self setNeedsDisplay];
     _shading = shading;
 }
@@ -101,31 +101,28 @@ void pattern2Callback (void *info, CGContextRef context) {
     int offset = rect.size.width / 10;
     int symbolWidth = rect.size.width - offset * 2;
     int symbolHeight = rect.size.height / 4;
+    UIBezierPath *path;
+    CGContextRef context = UIGraphicsGetCurrentContext();
     
     // Oval
     if (symbol == @"●") {
         CGRect dest = CGRectMake(x - symbolWidth / 2, y - symbolHeight / 2, symbolWidth, symbolHeight);
-        [[UIBezierPath bezierPathWithOvalInRect:dest] fill];
+        path = [UIBezierPath bezierPathWithOvalInRect:dest];
     }
     
     // Diamond
     if (symbol == @"▲") {
-        UIBezierPath *path = [[UIBezierPath alloc] init];
+        path = [[UIBezierPath alloc] init];
         [path moveToPoint   :CGPointMake(x, y - symbolHeight / 2)];
         [path addLineToPoint:CGPointMake(x - symbolWidth / 2, y)];
         [path addLineToPoint:CGPointMake(x, y + symbolHeight / 2)];
         [path addLineToPoint:CGPointMake(x + symbolWidth / 2, y)];
         [path closePath];
-        [self patternMake2:rect context:UIGraphicsGetCurrentContext()];
-        //[self.color setFill];
-        //[self.color setStroke];
-        [path fill];
-        [path stroke];
     }
     
     // Squiggly (shark???????????)
     if (symbol == @"■") {
-        UIBezierPath *path = [[UIBezierPath alloc] init];
+        path = [[UIBezierPath alloc] init];
         CGPoint centerPoint = CGPointMake(x, y);
         
         [path moveToPoint   :CGPointMake(x, y - symbolHeight / 2)];
@@ -135,10 +132,24 @@ void pattern2Callback (void *info, CGContextRef context) {
         [path addCurveToPoint:CGPointMake(x, y) controlPoint1:centerPoint controlPoint2:CGPointMake(x + symbolWidth, y)];
         
         [path closePath];
+    }
+    
+    [self.color setStroke];
+    [path stroke];
+    
+    NSLog(@"%@", self.shading);
+    
+    if (self.shading == @0) {
+        // Solid shading
         [self.color setFill];
-        [self.color setStroke];
         [path fill];
-        [path stroke];
+        NSLog(@"!");
+    } else if (self.shading == @1) {
+        // Striped shading
+        CGContextSaveGState(context);
+        [self patternMake2:rect context:UIGraphicsGetCurrentContext()];
+        [path fill];
+        CGContextRestoreGState(context);
     }
 }
 
