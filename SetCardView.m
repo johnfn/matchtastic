@@ -64,6 +64,36 @@
     }
 }
 
+// The concept for the following two functions were found with modifications from StackOverflow:
+// http://stackoverflow.com/questions/2373028/could-someone-please-show-me-how-to-create-a-cgpattern-that-i-can-use-to-stroke
+void pattern2Callback (void *info, CGContextRef context) {
+    UIGraphicsPushContext(context);
+    [[UIColor redColor] setStroke];
+    for (int i = 0; i < 20; i += 5) {
+        UIBezierPath *path = [[UIBezierPath alloc] init];
+        [path moveToPoint:CGPointMake(0, i)];
+        [path addLineToPoint:CGPointMake(i, 0)];
+        [path stroke];
+    }
+    UIGraphicsPopContext();
+}
+
+- (void)patternMake2:(CGRect)rect context:(CGContextRef)context
+{
+    static const CGPatternCallbacks callbacks = { 0, &pattern2Callback, NULL };
+    
+    CGColorSpaceRef patternSpace = CGColorSpaceCreatePattern(NULL);
+    CGContextSetFillColorSpace(context, patternSpace);
+    CGColorSpaceRelease(patternSpace);
+    CGSize patternSize = CGSizeMake(10, 10);
+    CGPatternRef pattern = CGPatternCreate(NULL, self.bounds, CGAffineTransformIdentity, patternSize.width, patternSize.height, kCGPatternTilingConstantSpacing, true, &callbacks);
+    CGFloat alpha = 1;
+    CGContextSetFillPattern(context, pattern, &alpha);
+    CGPatternRelease(pattern);
+    //CGContextFillRect(context, rect);
+    //CGContextRestoreGState(context);
+}
+
 - (void)drawSymbol:(NSString *)symbol inRect:(CGRect)rect atX:(int)x atY:(int)y {
     int offset = rect.size.width / 10;
     int symbolWidth = rect.size.width - offset * 2;
@@ -83,15 +113,29 @@
         [path addLineToPoint:CGPointMake(x, y + symbolHeight / 2)];
         [path addLineToPoint:CGPointMake(x + symbolWidth / 2, y)];
         [path closePath];
-        [self.color setFill];
-        [self.color setStroke];
+        [self patternMake2:rect context:UIGraphicsGetCurrentContext()];
+        //[self.color setFill];
+        //[self.color setStroke];
         [path fill];
         [path stroke];
     }
     
-    // Squiggly
+    // Squiggly (shark???????????)
     if (symbol == @"■") {
+        UIBezierPath *path = [[UIBezierPath alloc] init];
+        CGPoint centerPoint = CGPointMake(x, y);
         
+        [path moveToPoint   :CGPointMake(x, y - symbolHeight / 2)];
+        [path addCurveToPoint:CGPointMake(x - symbolWidth, y) controlPoint1:centerPoint controlPoint2:CGPointMake(x - symbolWidth, y)];
+       
+        [path addCurveToPoint:CGPointMake(x, y + symbolHeight / 2) controlPoint1:centerPoint controlPoint2:CGPointMake(x, y + symbolHeight)];
+        [path addCurveToPoint:CGPointMake(x, y) controlPoint1:centerPoint controlPoint2:CGPointMake(x + symbolWidth, y)];
+        
+        [path closePath];
+        [self.color setFill];
+        [self.color setStroke];
+        [path fill];
+        [path stroke];
     }
 }
 
