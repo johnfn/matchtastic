@@ -11,6 +11,7 @@
 #import "SetCardDeck.h"
 #import "SetCard.h"
 #import "SetCardView.h"
+#import "SetCardCollectionViewCell.h"
 
 @interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -56,9 +57,18 @@
 {
     UICollectionViewCell *cell = [self.cardCollectionView
                                   dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
-    if ([cell isKindOfClass:[SetCardView class]]) {
-        SetCardView *scv = (SetCardView *)cell;
-        scv.count = 2;
+    
+    if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {
+        int idx = [indexPath indexAtPosition:1];
+        SetCard *card = (SetCard *)[self.game cardAtIndex:idx];
+        
+        SetCardCollectionViewCell *sccvc = (SetCardCollectionViewCell *)cell;
+        
+        SetCardView *scv = sccvc.setCardView;
+        scv.count   = card.count;
+        scv.color   = card.color;
+        scv.shading = card.shading;
+        scv.symbol  = card.symbol;
     }
     
     return cell;

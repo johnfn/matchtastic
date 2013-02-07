@@ -12,11 +12,30 @@
 
 @implementation SetCardView
 
+- (void)setColor:(UIColor *)color {
+    [self setNeedsDisplay];
+    _color = color;
+}
+
+- (void)setCount:(NSNumber *)count {
+    [self setNeedsDisplay];
+    _count = count;
+}
+
+- (void)setShading:(UIColor *)shading {
+    [self setNeedsDisplay];
+    _shading = shading;
+}
+
+- (void)setSymbol:(NSString *)symbol {
+    [self setNeedsDisplay];
+    _symbol = symbol;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor redColor]];
         [self setOpaque:NO];
     }
     return self;
@@ -24,6 +43,13 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    if (self.color == nil) {
+        // haven't been initialized yet.
+        return;
+    }
+    
+    NSLog(@"Good, we have color and calling drawRect");
+    
     [[UIColor orangeColor] setFill];
     [[UIBezierPath bezierPathWithOvalInRect:rect] fill];
 }

@@ -10,8 +10,8 @@
 
 @interface SetCardView : UIView
 
-//@property (nonatomic) UIColor *color;
-@property (nonatomic) int count;
+@property (nonatomic) UIColor *color;
+@property (nonatomic) NSNumber *count;
 @property (nonatomic) UIColor *shading;
 @property (nonatomic) NSString *symbol;
 
