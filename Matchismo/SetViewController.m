@@ -18,23 +18,21 @@
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (nonatomic) int flipCount;
-@property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *threeMoreButton;
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *displayCards;
 
 @end
 
 @implementation SetViewController
 
 #define CARDS_TO_DEAL 3
+#define START_CARD_NUM 12
 
 - (CardMatchingGame *)game {
     if (!super.game) {
         //TODO - 20 hardcode
-        super.game = [[CardMatchingGame alloc] initWithCardCount:20 usingDeck:[[SetCardDeck alloc] init]];
+        super.game = [[CardMatchingGame alloc] initWithCardCount:START_CARD_NUM usingDeck:[[SetCardDeck alloc] init]];
         [self updateUI];
     }
     
@@ -60,8 +58,6 @@
     if (ip == nil) return;
     
     NSUInteger index = [ip indexAtPosition:1];
-    ++_flipCount;
-    
     [self.game flipCardAtIndex:index withPairSize:3];
     
     //TODO
@@ -129,6 +125,8 @@
     // Show the cards we last played
     if (self.game.lastPlayedCards.count) {
         NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played the cards below"];
+        
+        /*
         int i = 0;
         
         for (SetCard *card in self.game.lastPlayedCards) {
@@ -150,6 +148,7 @@
             SetCardView *v = (SetCardView *)[self.displayCards objectAtIndex:i];
             v.hidden = YES;
         }
+        */
         
         // If they completed a play, show the score also.
         if (self.game.lastPlayedCards.count == 3) {

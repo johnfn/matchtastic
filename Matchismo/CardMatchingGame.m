@@ -76,7 +76,7 @@
         }
     }
     
-    return [result copy];
+    return result;
 }
 
 #define FLIP_COST -1
@@ -88,18 +88,14 @@
     
     int score = FLIP_COST;
     
+    self.lastScore = 0;
+    self.lastPlayedCards = [self faceUpCards];
+    
     if ([self faceUpCards].count != pairSize) {
         if (!card.faceUp) {
             self.lastScore = score;
             self.score += score;
             
-            [self.lastPlayedCards removeObject:card];
-        } else {
-            NSLog(@"%d", self.lastPlayedCards.count);
-            
-            if (self.lastPlayedCards == nil || self.lastPlayedCards.count == 3) {
-                self.lastPlayedCards = [[NSMutableArray alloc] init];
-            }
             [self.lastPlayedCards addObject:card];
         }
         
@@ -118,7 +114,6 @@
     
     self.score += score;
     
-    self.lastPlayedCards = [self faceUpCards];
     self.lastScore = score;
     
     if (scoreMultiplier > 0) {
