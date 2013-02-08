@@ -70,8 +70,6 @@
     NSUInteger index = [ip indexAtPosition:1];
     [self.game flipCardAtIndex:index withPairSize:2];
     
-    //TODO
-    //[super flipCard:sender];
     [self updateUI];
 }
 

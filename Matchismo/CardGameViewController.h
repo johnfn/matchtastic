@@ -14,6 +14,5 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 
 - (void)updateUI;
-- (IBAction)flipCard:(UIButton *)sender;
 
 @end

@@ -183,9 +183,6 @@
                                 </connections>
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="637" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rS3-fL-RR4">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="327" id="IKK-CH-a5Z"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e20-HQ-Xh6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -228,16 +225,17 @@
                         <constraints>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="1S4-ew-XJA"/>
                             <constraint firstItem="OGe-pT-gtX" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="4yA-FC-Jrj"/>
-                            <constraint firstItem="rS3-fL-RR4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="CFi-cc-Ubg"/>
                             <constraint firstItem="62G-G8-fE0" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="EAG-6e-7z8"/>
+                            <constraint firstItem="rS3-fL-RR4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="FHA-Pj-eH6"/>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="top" secondItem="OGe-pT-gtX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Opl-Un-izE"/>
                             <constraint firstItem="62G-G8-fE0" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="P3j-bF-3DU"/>
-                            <constraint firstItem="rS3-fL-RR4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="YQB-tV-ZZj"/>
                             <constraint firstItem="OGe-pT-gtX" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Zf7-fv-zNj"/>
                             <constraint firstItem="Q5N-09-NjI" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="aAr-Zb-a72"/>
+                            <constraint firstItem="rS3-fL-RR4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="cgl-P2-pbQ"/>
                             <constraint firstItem="Q5N-09-NjI" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="kwX-rh-P5a"/>
-                            <constraint firstItem="OGe-pT-gtX" firstAttribute="top" secondItem="rS3-fL-RR4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rVJ-Yq-8hH"/>
+                            <constraint firstItem="OGe-pT-gtX" firstAttribute="top" secondItem="rS3-fL-RR4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="q3G-hb-qkt"/>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="centerX" secondItem="OGe-pT-gtX" secondAttribute="centerX" type="default" id="t9P-2t-QeR"/>
+                            <constraint firstItem="rS3-fL-RR4" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="uvt-hB-T9V"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XIM-Rk-DYv" appends="YES" id="dLW-RN-Nwl"/>
@@ -278,6 +276,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchismoViewController.h"/>
             <relationships>
                 <relationship kind="action" name="dealButton:"/>
+                <relationship kind="action" name="tapGesture:"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="dealButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
@@ -324,6 +323,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

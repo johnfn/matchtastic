@@ -12,7 +12,7 @@
 @implementation SetCard : Card
 
 + (NSArray *)validSymbols {
-    return @[@"▲", @"●", @"■"];
+    return @[@"♢", @"●", @"~"];
 }
 
 + (NSArray *)validCounts {

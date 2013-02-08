@@ -31,7 +31,6 @@
 
 - (CardMatchingGame *)game {
     if (!super.game) {
-        //TODO - 20 hardcode
         super.game = [[CardMatchingGame alloc] initWithCardCount:START_CARD_NUM usingDeck:[[SetCardDeck alloc] init]];
         [self updateUI];
     }
@@ -55,8 +54,6 @@
     NSUInteger index = [ip indexAtPosition:1];
     [self.game flipCardAtIndex:index withPairSize:3];
     
-    //TODO
-    //[super flipCard:sender];
     [self updateUI];
 }
 
@@ -112,11 +109,24 @@
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:contents];
     NSRange wholestring = NSMakeRange(0, contents.length);
     
+    UIColor *interpretedCardColor = card.color;
+    if (interpretedCardColor == [UIColor blueColor]) {
+        interpretedCardColor = [UIColor colorWithRed:0 green:255 blue:255 alpha:0];
+    }
+    
     [str addAttribute:NSStrokeColorAttributeName value:card.color range:wholestring];
     [str addAttribute:NSStrokeWidthAttributeName value:@-5 range:wholestring];
     
-    //TODO
-    //[str addAttribute:NSForegroundColorAttributeName value:card.shading range:wholestring];
+    UIColor *shadingColor;
+    if (card.shading == [SetCard validShades][0]) {
+        shadingColor = [UIColor whiteColor];
+    } else if (card.shading == [SetCard validShades][1]) {
+        shadingColor = [UIColor grayColor];
+    } else {
+        shadingColor = [UIColor blackColor];
+    }
+    
+    [str addAttribute:NSBackgroundColorAttributeName value:shadingColor range:wholestring];
     
     return str;
 }
@@ -124,31 +134,19 @@
 - (void)updateUI {
     // Show the cards we last played
     if (self.game.lastPlayedCards.count) {
-        NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played the cards below"];
-        
-        /*
+        NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played: "];
         int i = 0;
         
         for (SetCard *card in self.game.lastPlayedCards) {
-            SetCardView *v = (SetCardView *)[self.displayCards objectAtIndex:i];
-            v.count   = card.count;
-            v.color   = card.color;
-            v.shading = card.shading;
-            v.symbol  = card.symbol;
-            v.hidden  = NO;
+            [gameStatus appendAttributedString:[self renderText:card]];
             
-            // Give them a thick border color - otherwise they look weird.
-            v.layer.borderColor = [UIColor blackColor].CGColor;
-            v.layer.borderWidth = 2.0f;
+            // Append commas unless it's the last one
+            if (i != self.game.lastPlayedCards.count - 1) {
+                [gameStatus appendAttributedString:[[NSAttributedString alloc] initWithString:@", "]];
+            }
             
             ++i;
         }
-        
-        for (; i < 3; i++) {
-            SetCardView *v = (SetCardView *)[self.displayCards objectAtIndex:i];
-            v.hidden = YES;
-        }
-        */
         
         // If they completed a play, show the score also.
         if (self.game.lastPlayedCards.count == 3) {
@@ -171,33 +169,7 @@
     [super updateUI];
 }
 
-/*
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
- */
-
-
 - (void)viewDidLoad {
-    // The concept of ordering the buttons based on their position was found on StackOverflow:
-    // http://stackoverflow.com/questions/6527762/iboutletcollection-set-ordering-in-interface-builder
-    
-    // Order the labels based on their y position
-    /*
-    self.SetCards = [self.SetCards sortedArrayUsingComparator:^NSComparisonResult(id button1, id button2) {
-        if ([button1 frame].origin.y < [button2 frame].origin.y) {
-            return NSOrderedAscending;
-        } else if ([button1 frame].origin.y > [button2 frame].origin.y) {
-            return NSOrderedDescending;
-        } else {
-            if ([button1 frame].origin.x < [button2 frame].origin.x) {
-                return NSOrderedAscending;
-            } else {
-                return NSOrderedDescending;
-            }
-        }
-    }];
-     */
     [self updateUI];
     
     [super viewDidLoad];

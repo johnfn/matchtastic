@@ -111,7 +111,7 @@ void pattern2Callback (void *info, CGContextRef context) {
     }
     
     // Diamond
-    if (symbol == @"▲") {
+    if (symbol == @"♢") {
         path = [[UIBezierPath alloc] init];
         [path moveToPoint   :CGPointMake(x, y - symbolHeight / 2)];
         [path addLineToPoint:CGPointMake(x - symbolWidth / 2, y)];
@@ -121,7 +121,7 @@ void pattern2Callback (void *info, CGContextRef context) {
     }
     
     // Squiggly (shark???????????)
-    if (symbol == @"■") {
+    if (symbol == @"~") {
         path = [[UIBezierPath alloc] init];
         CGPoint centerPoint = CGPointMake(x, y);
         
