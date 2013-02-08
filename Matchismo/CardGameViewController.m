@@ -36,4 +36,9 @@
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
+- (void)deal {
+    self.game = nil; // cause the (custom-implemented) lazy-loading to fire again.
+    [self updateUI];
+}
+
 @end

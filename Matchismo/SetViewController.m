@@ -85,8 +85,7 @@
 }
 
 - (IBAction)dealButton:(id)sender {
-    super.game = nil; // cause the lazy-loading to be fired again.
-    [self updateUI];
+    [super deal];
 }
 
 - (IBAction)threeMoreButton:(id)sender {

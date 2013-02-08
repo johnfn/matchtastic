@@ -103,9 +103,7 @@
 }
 
 - (IBAction)dealButton:(id)sender {
-    super.game = [[CardMatchingGame alloc] initWithCardCount:NUM_CARDS usingDeck:[[PlayingCardDeck alloc] init]];
-    
-    [self updateUI];
+    [super deal];
 }
 
 /*
