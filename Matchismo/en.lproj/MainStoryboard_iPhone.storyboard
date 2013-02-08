@@ -212,6 +212,9 @@
                                             <constraint firstItem="VQy-Vs-bmC" firstAttribute="bottom" secondItem="uE7-hH-FXC" secondAttribute="bottom" type="default" id="XN0-Sn-Q8O"/>
                                             <constraint firstItem="VQy-Vs-bmC" firstAttribute="leading" secondItem="uE7-hH-FXC" secondAttribute="leading" type="default" id="aFq-TG-4o6"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="playingCardView" destination="VQy-Vs-bmC" id="Uw0-sQ-lwT"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
