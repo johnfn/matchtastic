@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1968D816C4CD5100CA11B4 /* PlayingCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1968D516C4CD5100CA11B4 /* PlayingCardCollectionViewCell.m */; };
+		8B1968D916C4CD5100CA11B4 /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1968D716C4CD5100CA11B4 /* PlayingCardView.m */; };
+		8B1968DD16C4D5B700CA11B4 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1968DB16C4D5B700CA11B4 /* cardback.png */; };
+		8B1968DE16C4D5B700CA11B4 /* Face Card Images in Resources */ = {isa = PBXBuildFile; fileRef = 8B1968DC16C4D5B700CA11B4 /* Face Card Images */; };
 		8B1CEED416B7890E00863522 /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEED316B7890D00863522 /* SetViewController.m */; };
 		8B1CEED816B78BE800863522 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEED716B78BE800863522 /* SetCard.m */; };
 		8B1CEEDB16B78FBF00863522 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CEEDA16B78FBF00863522 /* SetCardDeck.m */; };
@@ -34,6 +38,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B1968D416C4CD5100CA11B4 /* PlayingCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardCollectionViewCell.h; sourceTree = "<group>"; };
+		8B1968D516C4CD5100CA11B4 /* PlayingCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardCollectionViewCell.m; sourceTree = "<group>"; };
+		8B1968D616C4CD5100CA11B4 /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		8B1968D716C4CD5100CA11B4 /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		8B1968DB16C4D5B700CA11B4 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
+		8B1968DC16C4D5B700CA11B4 /* Face Card Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Face Card Images"; sourceTree = "<group>"; };
 		8B1CEED216B7890D00863522 /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		8B1CEED316B7890D00863522 /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		8B1CEED616B78BE800863522 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCard.h; sourceTree = "<group>"; };
@@ -125,6 +135,10 @@
 				8BF0D45816A47DE300C63061 /* CardGameAppDelegate.h */,
 				8BF0D45916A47DE300C63061 /* CardGameAppDelegate.m */,
 				8BF0D46116A47DE300C63061 /* MainStoryboard_iPhone.storyboard */,
+				8B1968D416C4CD5100CA11B4 /* PlayingCardCollectionViewCell.h */,
+				8B1968D516C4CD5100CA11B4 /* PlayingCardCollectionViewCell.m */,
+				8B1968D616C4CD5100CA11B4 /* PlayingCardView.h */,
+				8B1968D716C4CD5100CA11B4 /* PlayingCardView.m */,
 				8B99B6BB16C376C5002D9BB0 /* SetCardCollectionViewCell.h */,
 				8B99B6BC16C376C5002D9BB0 /* SetCardCollectionViewCell.m */,
 				8BEF2F8116AFA867001ED98E /* cardback.jpg */,
@@ -136,6 +150,8 @@
 				8BF0D46816A47DE300C63061 /* CardGameViewController.m */,
 				8B1CEEDC16B990A200863522 /* MatchismoViewController.h */,
 				8B1CEEDD16B990A200863522 /* MatchismoViewController.m */,
+				8B1968DB16C4D5B700CA11B4 /* cardback.png */,
+				8B1968DC16C4D5B700CA11B4 /* Face Card Images */,
 				8BF0D45016A47DE300C63061 /* Supporting Files */,
 			);
 			path = Matchismo;
@@ -235,6 +251,8 @@
 				8BF0D46316A47DE300C63061 /* MainStoryboard_iPhone.storyboard in Resources */,
 				8BF0D46616A47DE300C63061 /* MainStoryboard_iPad.storyboard in Resources */,
 				8BEF2F8216AFA867001ED98E /* cardback.jpg in Resources */,
+				8B1968DD16C4D5B700CA11B4 /* cardback.png in Resources */,
+				8B1968DE16C4D5B700CA11B4 /* Face Card Images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +277,8 @@
 				8B1CEEDE16B990A300863522 /* MatchismoViewController.m in Sources */,
 				8B99B6B316C35DC1002D9BB0 /* SetCardView.m in Sources */,
 				8B99B6BD16C376C5002D9BB0 /* SetCardCollectionViewCell.m in Sources */,
+				8B1968D816C4CD5100CA11B4 /* PlayingCardCollectionViewCell.m in Sources */,
+				8B1968D916C4CD5100CA11B4 /* PlayingCardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@
 #import "SetCardCollectionViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
+@interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -46,11 +46,6 @@
     _cardCollectionView.delegate = self; // must implement UICollectionViewDelegate!
 }
 
-- (NSInteger)collectionView:(UICollectionView *)asker
-     numberOfItemsInSection:(NSInteger)section {
-    return self.game.numCards;
-}
-
 - (IBAction)tap:(UITapGestureRecognizer *)sender {
     CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
     
@@ -63,6 +58,11 @@
     //TODO
     //[super flipCard:sender];
     [self updateUI];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)asker
+     numberOfItemsInSection:(NSInteger)section {
+    return self.game.numCards;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)asker

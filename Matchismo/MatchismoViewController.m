@@ -7,28 +7,64 @@
 //
 
 #import "MatchismoViewController.h"
+#import "PlayingCard.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCardCollectionViewCell.h"
 
-@interface MatchismoViewController()
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardCollection;
+@interface MatchismoViewController() <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *dealButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-
+@property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 @end
 
+#define NUM_CARDS 20
+
 @implementation MatchismoViewController
+
 - (CardMatchingGame *)game {
     if (!super.game) {
-        super.game = [[CardMatchingGame alloc] initWithCardCount:self.cardCollection.count usingDeck:[[PlayingCardDeck alloc] init]];
+        super.game = [[CardMatchingGame alloc] initWithCardCount:20 usingDeck:[[PlayingCardDeck alloc] init]];
         [self updateUI];
     }
     
     return super.game;
 }
 
-- (void)updateUI {
-    UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
+- (NSInteger)collectionView:(UICollectionView *)asker
+     numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"%d", self.game.numCards);
+    return self.game.numCards;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)asker
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self.cardCollectionView
+                                  dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
     
+    if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
+        int idx = [indexPath indexAtPosition:1];
+        
+        NSLog(@"%d", idx);
+        
+        [self.game cardAtIndex:idx];
+        
+        PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:idx];
+        
+        PlayingCardCollectionViewCell *pccvc = (PlayingCardCollectionViewCell *)cell;
+        
+        PlayingCardView *pcv = pccvc.playingCardView;
+        pcv.suit = card.suit;
+        pcv.rank = card.rank;
+        pcv.faceUp = card.isFaceUp;
+        pcv.alpha = card.isUnplayable ? 0.3 : 1.0;
+
+    }
+    
+    return cell;
+}
+
+- (void)updateUI {
+    /*
     for (UIButton *cardButton in self.cardCollection) {
         Card *card = [self.game cardAtIndex:[self.cardCollection indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
@@ -39,6 +75,7 @@
         
         [cardButton setImage:cardBackImage forState:UIControlStateSelected|UIControlStateDisabled];
     }
+     */
     
     if (self.game.lastScore) {
         NSMutableString *statusString = [[NSMutableString alloc] init];
@@ -68,15 +105,18 @@
 }
 
 - (IBAction)dealButton:(id)sender {
-    super.game = [[CardMatchingGame alloc] initWithCardCount:self.cardCollection.count usingDeck:[[PlayingCardDeck alloc] init]];
+    super.game = [[CardMatchingGame alloc] initWithCardCount:NUM_CARDS usingDeck:[[PlayingCardDeck alloc] init]];
     
     [self updateUI];
 }
 
+/*
 - (IBAction)flipCard:(UIButton *)sender {
     [self.game flipCardAtIndex:[self.cardCollection indexOfObject:sender] withPairSize:2];
     
     [super flipCard:sender];
     [self updateUI];
 }
+*/
+
 @end
