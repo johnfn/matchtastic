@@ -57,26 +57,25 @@
         pcv.rank = card.rank;
         pcv.faceUp = card.isFaceUp;
         pcv.alpha = card.isUnplayable ? 0.3 : 1.0;
-
     }
     
     return cell;
 }
+- (IBAction)tapGesture:(id)sender {
+    CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
+    
+    NSIndexPath *ip = [self.cardCollectionView indexPathForItemAtPoint:loc];
+    if (ip == nil) return;
+    
+    NSUInteger index = [ip indexAtPosition:1];
+    [self.game flipCardAtIndex:index withPairSize:2];
+    
+    //TODO
+    //[super flipCard:sender];
+    [self updateUI];
+}
 
 - (void)updateUI {
-    /*
-    for (UIButton *cardButton in self.cardCollection) {
-        Card *card = [self.game cardAtIndex:[self.cardCollection indexOfObject:cardButton]];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
-        
-        [cardButton setImage:cardBackImage forState:UIControlStateSelected|UIControlStateDisabled];
-    }
-     */
-    
     if (self.game.lastScore) {
         NSMutableString *statusString = [[NSMutableString alloc] init];
         
@@ -101,6 +100,7 @@
         [self.statusLabel setText:statusString];
     }
 
+    [self.cardCollectionView reloadData];
     [super updateUI];
 }
 

@@ -224,6 +224,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="1S4-ew-XJA"/>
                             <constraint firstItem="OGe-pT-gtX" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="4yA-FC-Jrj"/>
@@ -238,6 +239,9 @@
                             <constraint firstItem="OGe-pT-gtX" firstAttribute="top" secondItem="rS3-fL-RR4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rVJ-Yq-8hH"/>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="centerX" secondItem="OGe-pT-gtX" secondAttribute="centerX" type="default" id="t9P-2t-QeR"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="XIM-Rk-DYv" appends="YES" id="dLW-RN-Nwl"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Matchismo!" id="mhw-9d-QDz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -251,6 +255,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XIM-Rk-DYv">
+                    <connections>
+                        <action selector="tapGesture:" destination="2" id="Fe5-2L-xu9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-246" y="-60"/>
         </scene>
