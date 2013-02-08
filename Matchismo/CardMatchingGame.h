@@ -24,6 +24,6 @@
 @property (readonly, nonatomic) bool hasGameBegun;
 @property (readonly, nonatomic) int numCards;
 
-@property (readonly, strong, nonatomic) NSArray *lastPlayedCards;
+@property (readonly, strong, nonatomic) NSMutableArray *lastPlayedCards;
 @property (readonly, nonatomic) int lastScore;
 @end

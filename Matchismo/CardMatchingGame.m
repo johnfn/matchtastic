@@ -14,7 +14,7 @@
 @property (readwrite, nonatomic) bool hasGameBegun;
 @property (strong, nonatomic) Deck *deck;
 
-@property (readwrite, strong, nonatomic) NSArray *lastPlayedCards;
+@property (readwrite, strong, nonatomic) NSMutableArray *lastPlayedCards;
 @property (readwrite, nonatomic) int lastScore;
 @end
 
@@ -67,7 +67,7 @@
     return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
-- (NSArray *) faceUpCards {
+- (NSMutableArray *) faceUpCards {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     for (Card *card in self.cards) {
@@ -90,9 +90,17 @@
     
     if ([self faceUpCards].count != pairSize) {
         if (!card.faceUp) {
-            self.lastPlayedCards = @[card];
             self.lastScore = score;
             self.score += score;
+            
+            [self.lastPlayedCards removeObject:card];
+        } else {
+            NSLog(@"%d", self.lastPlayedCards.count);
+            
+            if (self.lastPlayedCards == nil || self.lastPlayedCards.count == 3) {
+                self.lastPlayedCards = [[NSMutableArray alloc] init];
+            }
+            [self.lastPlayedCards addObject:card];
         }
         
         return;

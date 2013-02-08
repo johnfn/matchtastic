@@ -126,33 +126,6 @@
 }
 
 - (void)updateUI {
-    /*
-    for (int i = 0; i < self.game.numCards; i++) {
-        UIButton *cardButton = [self.SetCards objectAtIndex:i];
-        
-        if (i < self.game.numCards) {
-            SetCard *card = (SetCard *)[self.game cardAtIndex:i];
-            
-            if (card.isUnplayable) {
-                [cardButton setHidden:YES];
-            } else {
-                [cardButton setHidden:NO];
-
-                if (card.isFaceUp) {
-                    [cardButton setBackgroundColor:[UIColor grayColor]];
-                } else {
-                    [cardButton setBackgroundColor:[UIColor whiteColor]];
-                }
-            }
-            
-            [cardButton setAttributedTitle:[self renderText:card] forState:UIControlStateNormal];
-            [cardButton setHidden:NO];
-        } else {
-            [cardButton setHidden:YES];
-        }
-    }
-     */
-    
     // Show the cards we last played
     if (self.game.lastPlayedCards.count) {
         NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played the cards below"];
@@ -164,6 +137,7 @@
             v.color   = card.color;
             v.shading = card.shading;
             v.symbol  = card.symbol;
+            v.hidden  = NO;
             
             // Give them a thick border color - otherwise they look weird.
             v.layer.borderColor = [UIColor blackColor].CGColor;
@@ -172,15 +146,23 @@
             ++i;
         }
         
-        NSString *endOfStatus;
-        
-        if (self.game.lastScore > 0) {
-            endOfStatus = [NSString stringWithFormat:@" for %d points!", self.game.lastScore];
-        } else {
-            endOfStatus = [NSString stringWithFormat:@" losing %d points.", self.game.lastScore];
+        for (; i < 3; i++) {
+            SetCardView *v = (SetCardView *)[self.displayCards objectAtIndex:i];
+            v.hidden = YES;
         }
         
-        [gameStatus appendAttributedString:[[NSMutableAttributedString alloc] initWithString:endOfStatus]];
+        // If they completed a play, show the score also.
+        if (self.game.lastPlayedCards.count == 3) {
+            NSString *endOfStatus;
+            
+            if (self.game.lastScore > 0) {
+                endOfStatus = [NSString stringWithFormat:@" for %d points!", self.game.lastScore];
+            } else {
+                endOfStatus = [NSString stringWithFormat:@" losing %d points.", self.game.lastScore];
+            }
+            
+            [gameStatus appendAttributedString:[[NSMutableAttributedString alloc] initWithString:endOfStatus]];
+        }
     
         self.welcomeLabel.attributedText = gameStatus;
     }
