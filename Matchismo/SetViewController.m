@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *threeMoreButton;
 
 @end
 
@@ -61,9 +62,6 @@
     
     [self.game flipCardAtIndex:index withPairSize:3];
     
-    //TODO- constant
-    //[self.cardCollectionView setContentSize:CGSizeMake(320, 800)];
-    
     //TODO
     //[super flipCard:sender];
     [self updateUI];
@@ -98,7 +96,7 @@
 
 - (IBAction)threeMoreButton:(id)sender {
     if (![self.game dealMoreCards:CARDS_TO_DEAL]) {
-        [self.welcomeLabel setText:@"Out of cards!"];
+        [self.threeMoreButton setTitle:@"0 more!" forState:UIControlStateNormal];
     }
     
     // Allow CollectionView to update

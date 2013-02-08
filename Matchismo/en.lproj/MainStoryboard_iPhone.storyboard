@@ -111,6 +111,7 @@
                         <outlet property="cardCollectionView" destination="aNF-b6-y5C" id="mcC-Cx-G5a"/>
                         <outlet property="flipCountLabel" destination="JUL-wB-DI9" id="KyF-f1-a2r"/>
                         <outlet property="scoreLabel" destination="p3k-bJ-Rbg" id="fLs-Ko-dMu"/>
+                        <outlet property="threeMoreButton" destination="sqF-cy-8h8" id="1pk-KU-AzW"/>
                         <outlet property="welcomeLabel" destination="Glo-kr-BT7" id="sko-UG-csu"/>
                     </connections>
                 </viewController>
@@ -473,6 +474,8 @@
         <class className="MatchismoViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchismoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="dealButton:"/>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dealButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardCollection" candidateClass="UIButton"/>
@@ -496,7 +499,7 @@
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="flipCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tapGestureRecognizer" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="threeMoreButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -508,6 +511,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
