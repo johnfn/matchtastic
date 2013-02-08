@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
@@ -98,7 +97,9 @@
 }
 
 - (IBAction)threeMoreButton:(id)sender {
-    [self.game dealMoreCards:CARDS_TO_DEAL];
+    if (![self.game dealMoreCards:CARDS_TO_DEAL]) {
+        [self.welcomeLabel setText:@"Out of cards!"];
+    }
     
     // Allow CollectionView to update
     [self updateUI];
