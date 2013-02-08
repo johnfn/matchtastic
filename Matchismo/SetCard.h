@@ -12,7 +12,7 @@
 @interface SetCard : Card
 @property (strong, nonatomic) NSString* symbol;
 @property (nonatomic) NSNumber* count;
-@property (nonatomic) UIColor* shading;
+@property (nonatomic) NSNumber* shading;
 @property (nonatomic) UIColor* color;
 
 + (NSArray *)validSymbols;

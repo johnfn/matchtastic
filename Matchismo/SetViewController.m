@@ -51,6 +51,21 @@
     //TODO
     return 20;
 }
+- (IBAction)tap:(UITapGestureRecognizer *)sender {
+    CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
+    
+    NSIndexPath *ip = [self.cardCollectionView indexPathForItemAtPoint:loc];
+    if (ip == nil) return;
+    
+    NSUInteger index = [ip indexAtPosition:1];
+    ++_flipCount;
+    
+    [self.game flipCardAtIndex:index withPairSize:3];
+    
+    //TODO
+    //[super flipCard:sender];
+    [self updateUI];
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)asker
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -92,7 +107,8 @@
     [str addAttribute:NSStrokeColorAttributeName value:card.color range:wholestring];
     [str addAttribute:NSStrokeWidthAttributeName value:@-5 range:wholestring];
     
-    [str addAttribute:NSForegroundColorAttributeName value:card.shading range:wholestring];
+    //TODO
+    //[str addAttribute:NSForegroundColorAttributeName value:card.shading range:wholestring];
     
     return str;
 }
@@ -181,16 +197,6 @@
     [self updateUI];
     
     [super viewDidLoad];
-}
-
-- (IBAction)pushCard:(UIButton *)sender {
-    ++_flipCount;
-    
-    NSLog(@"TODO");
-    //[self.game flipCardAtIndex:[self.SetCards indexOfObject:sender] withPairSize:3];
-    
-    [super flipCard:sender];
-    [self updateUI];
 }
 
 @end

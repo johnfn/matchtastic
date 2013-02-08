@@ -78,7 +78,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="aNF-b6-y5C">
-                                <rect key="frame" x="9" y="20" width="301" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="301" height="235"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cjE-JH-nTV">
                                     <size key="itemSize" width="50" height="64"/>
@@ -110,6 +110,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="zz7-XA-xwl" id="Qk8-LD-JRb"/>
                                     <outlet property="delegate" destination="zz7-XA-xwl" id="rub-WX-K21"/>
+                                    <outletCollection property="gestureRecognizers" destination="sEB-7V-ICN" appends="YES" id="Twv-0V-Fvg"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -124,6 +125,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ne-sk-WFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sEB-7V-ICN">
+                    <connections>
+                        <action selector="tap:" destination="zz7-XA-xwl" id="15z-el-ymo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-246" y="528"/>
         </scene>
@@ -498,7 +504,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetViewController.h"/>
             <relationships>
                 <relationship kind="action" name="dealButton:"/>
-                <relationship kind="action" name="pushCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="tap:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="action" name="threeMoreButton:"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="flipCountLabel" candidateClass="UILabel"/>

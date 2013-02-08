@@ -137,13 +137,10 @@ void pattern2Callback (void *info, CGContextRef context) {
     [self.color setStroke];
     [path stroke];
     
-    NSLog(@"%@", self.shading);
-    
     if (self.shading == @0) {
         // Solid shading
         [self.color setFill];
         [path fill];
-        NSLog(@"!");
     } else if (self.shading == @1) {
         // Striped shading
         CGContextSaveGState(context);
