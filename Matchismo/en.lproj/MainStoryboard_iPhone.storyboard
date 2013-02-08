@@ -4,23 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="l8r-oB-Bh2">
-            <objects>
-                <viewController id="DJY-nr-i31" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eKf-mk-r5T" customClass="SetCardView">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ykT-ms-oDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-480" y="1150"/>
-        </scene>
         <!--Set View Controller - Set.-->
         <scene sceneID="Wpu-X6-aHe">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ne-sk-WFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="zz7-XA-xwl" customClass="SetViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lJM-4g-bnq">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
@@ -71,14 +58,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to Set!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Glo-kr-BT7">
-                                <rect key="frame" x="19" y="321" width="280" height="30"/>
+                                <rect key="frame" x="20" y="237" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="aNF-b6-y5C">
-                                <rect key="frame" x="0.0" y="0.0" width="301" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cjE-JH-nTV">
                                     <size key="itemSize" width="50" height="64"/>
@@ -110,11 +97,14 @@
                                 <connections>
                                     <outlet property="dataSource" destination="zz7-XA-xwl" id="Qk8-LD-JRb"/>
                                     <outlet property="delegate" destination="zz7-XA-xwl" id="rub-WX-K21"/>
-                                    <outletCollection property="gestureRecognizers" destination="sEB-7V-ICN" appends="YES" id="Twv-0V-Fvg"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="t5r-jN-mHd" appends="YES" id="UmW-wZ-4Je"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set." id="ScM-PP-2eH"/>
                     <connections>
@@ -124,10 +114,9 @@
                         <outlet property="welcomeLabel" destination="Glo-kr-BT7" id="sko-UG-csu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0ne-sk-WFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="sEB-7V-ICN">
+                <tapGestureRecognizer id="t5r-jN-mHd">
                     <connections>
-                        <action selector="tap:" destination="zz7-XA-xwl" id="15z-el-ymo"/>
+                        <action selector="tap:" destination="zz7-XA-xwl" id="vhr-SI-k3h"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -484,8 +473,6 @@
         <class className="MatchismoViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchismoViewController.h"/>
             <relationships>
-                <relationship kind="action" name="dealButton:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dealButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardCollection" candidateClass="UIButton"/>
@@ -509,6 +496,7 @@
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="flipCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tapGestureRecognizer" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -520,9 +508,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

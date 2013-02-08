@@ -13,7 +13,7 @@
 #import "SetCardView.h"
 #import "SetCardCollectionViewCell.h"
 
-@interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
 
 @end
 
@@ -61,6 +62,9 @@
     ++_flipCount;
     
     [self.game flipCardAtIndex:index withPairSize:3];
+    
+    //TODO- constant
+    //[self.cardCollectionView setContentSize:CGSizeMake(320, 800)];
     
     //TODO
     //[super flipCard:sender];
@@ -172,6 +176,13 @@
     [super updateUI];
 }
 
+/*
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+ */
+
+
 - (void)viewDidLoad {
     // The concept of ordering the buttons based on their position was found on StackOverflow:
     // http://stackoverflow.com/questions/6527762/iboutletcollection-set-ordering-in-interface-builder
@@ -192,8 +203,6 @@
         }
     }];
      */
-
-    //[self.scrollView setContentSize:CGSizeMake(320, 500)];
     [self updateUI];
     
     [super viewDidLoad];
