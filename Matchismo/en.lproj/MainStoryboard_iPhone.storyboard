@@ -58,14 +58,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to Set!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Glo-kr-BT7">
-                                <rect key="frame" x="20" y="237" width="280" height="30"/>
+                                <rect key="frame" x="20" y="310" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="aNF-b6-y5C">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cjE-JH-nTV">
                                     <size key="itemSize" width="50" height="64"/>
@@ -99,6 +99,21 @@
                                     <outlet property="delegate" destination="zz7-XA-xwl" id="rub-WX-K21"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" id="ogx-nu-Vla" customClass="SetCardView">
+                                <rect key="frame" x="78" y="348" width="46" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="SIH-fP-4et" customClass="SetCardView">
+                                <rect key="frame" x="126" y="348" width="46" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="JZo-6r-oIi" customClass="SetCardView">
+                                <rect key="frame" x="175" y="348" width="46" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -113,6 +128,9 @@
                         <outlet property="scoreLabel" destination="p3k-bJ-Rbg" id="fLs-Ko-dMu"/>
                         <outlet property="threeMoreButton" destination="sqF-cy-8h8" id="1pk-KU-AzW"/>
                         <outlet property="welcomeLabel" destination="Glo-kr-BT7" id="sko-UG-csu"/>
+                        <outletCollection property="displayCards" destination="ogx-nu-Vla" id="cnb-W1-CLO"/>
+                        <outletCollection property="displayCards" destination="SIH-fP-4et" id="KI1-Xc-2Bp"/>
+                        <outletCollection property="displayCards" destination="JZo-6r-oIi" id="HCz-tM-GWz"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="t5r-jN-mHd">
@@ -501,6 +519,7 @@
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="threeMoreButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="displayCards" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">

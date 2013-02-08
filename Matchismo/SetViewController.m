@@ -12,6 +12,7 @@
 #import "SetCard.h"
 #import "SetCardView.h"
 #import "SetCardCollectionViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SetViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *threeMoreButton;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *displayCards;
 
 @end
 
@@ -151,17 +153,21 @@
     }
      */
     
+    // Show the cards we last played
     if (self.game.lastPlayedCards.count) {
-        NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played: "];
+        NSMutableAttributedString *gameStatus = [[NSMutableAttributedString alloc] initWithString:@"You played the cards below"];
         int i = 0;
         
         for (SetCard *card in self.game.lastPlayedCards) {
-            [gameStatus appendAttributedString:[self renderText:card]];
+            SetCardView *v = (SetCardView *)[self.displayCards objectAtIndex:i];
+            v.count   = card.count;
+            v.color   = card.color;
+            v.shading = card.shading;
+            v.symbol  = card.symbol;
             
-            // Append commas unless it's the last one
-            if (i != self.game.lastPlayedCards.count - 1) {
-                [gameStatus appendAttributedString:[[NSAttributedString alloc] initWithString:@", "]];
-            }
+            // Give them a thick border color - otherwise they look weird.
+            v.layer.borderColor = [UIColor blackColor].CGColor;
+            v.layer.borderWidth = 2.0f;
             
             ++i;
         }
