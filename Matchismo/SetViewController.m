@@ -47,11 +47,10 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)asker
-     numberOfItemsInSection:(NSInteger)section
-{
-    //TODO
-    return 20;
+     numberOfItemsInSection:(NSInteger)section {
+    return self.game.numCards;
 }
+
 - (IBAction)tap:(UITapGestureRecognizer *)sender {
     CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
     
@@ -72,13 +71,13 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)asker
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self.cardCollectionView
                                   dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
     
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {
         int idx = [indexPath indexAtPosition:1];
+        
         SetCard *card = (SetCard *)[self.game cardAtIndex:idx];
         
         SetCardCollectionViewCell *sccvc = (SetCardCollectionViewCell *)cell;
@@ -100,7 +99,15 @@
 
 - (IBAction)threeMoreButton:(id)sender {
     [self.game dealMoreCards:CARDS_TO_DEAL];
+    
+    // Allow CollectionView to update
     [self updateUI];
+    
+    // Now scroll to the bottom.
+    // These two lines with help from StackOverflow:
+    // http://stackoverflow.com/questions/952412/uiscrollview-scroll-to-bottom-programmatically
+    CGPoint bottomOffset = CGPointMake(0, self.cardCollectionView.contentSize.height - self.cardCollectionView.bounds.size.height);
+    [self.cardCollectionView setContentOffset:bottomOffset animated:YES];
 }
 
 - (NSMutableAttributedString *)renderText:(SetCard *)card {
@@ -172,6 +179,8 @@
     
         self.welcomeLabel.attributedText = gameStatus;
     }
+    
+    [self.cardCollectionView reloadData];
     
     [super updateUI];
 }
