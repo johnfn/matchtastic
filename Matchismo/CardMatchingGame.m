@@ -133,7 +133,9 @@
     }
 }
 
-- (void)flipCardAtIndex:(NSUInteger)index withPairSize:(NSUInteger)size {
+- (void)flipCardAtIndex:(NSInteger)index withPairSize:(NSInteger)size {
+    if (index < 0) return;
+    
     self.hasGameBegun = true;
     
     Card *card = [self cardAtIndex:index];

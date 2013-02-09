@@ -32,7 +32,6 @@
 
 - (NSInteger)collectionView:(UICollectionView *)asker
      numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"%d", self.game.numCards);
     return self.game.numCards;
 }
 
@@ -43,8 +42,6 @@
     
     if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
         int idx = [indexPath indexAtPosition:1];
-        
-        NSLog(@"%d", idx);
         
         [self.game cardAtIndex:idx];
         
@@ -91,22 +88,11 @@
         
         [self.statusLabel setText:statusString];
     }
-
-    [self.cardCollectionView reloadData];
     [super updateUI];
 }
 
 - (IBAction)dealButton:(id)sender {
     [super deal];
 }
-
-/*
-- (IBAction)flipCard:(UIButton *)sender {
-    [self.game flipCardAtIndex:[self.cardCollection indexOfObject:sender] withPairSize:2];
-    
-    [super flipCard:sender];
-    [self updateUI];
-}
-*/
 
 @end

@@ -35,6 +35,8 @@
 - (void)updateUI {
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+
+    [self.cardCollectionView reloadData];
 }
 
 - (void)deal {
@@ -46,7 +48,7 @@
     CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
     
     NSIndexPath *ip = [self.cardCollectionView indexPathForItemAtPoint:loc];
-    if (ip == nil) return 0;
+    if (ip == nil) return -1;
     
     return [ip indexAtPosition:1];
 }
