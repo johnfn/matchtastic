@@ -89,14 +89,11 @@
     int score = FLIP_COST;
     
     self.lastScore = 0;
-    self.lastPlayedCards = [self faceUpCards];
     
     if ([self faceUpCards].count != pairSize) {
         if (!card.faceUp) {
             self.lastScore = score;
             self.score += score;
-            
-            [self.lastPlayedCards addObject:card];
         }
         
         return;
@@ -130,7 +127,9 @@
             matchedCard.faceUp = false;
         }
         
-        card.faceUp = true;
+        if (!shouldRemoveCards) {
+            card.faceUp = true;
+        }
     }
 }
 
@@ -140,6 +139,16 @@
     Card *card = [self cardAtIndex:index];
     
     if (card.isUnplayable) return;
+    
+    if (self.lastPlayedCards == nil || self.lastPlayedCards.count == size) {
+        self.lastPlayedCards = [[NSMutableArray alloc] init];
+    }
+    
+    if (!card.isFaceUp) {
+        [self.lastPlayedCards addObject:card];
+    } else {
+        [self.lastPlayedCards removeObject:card];
+    }
     
     [self calculateScore:size justFlipped:card removeCards:(size == 3)];
 }

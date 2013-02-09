@@ -12,6 +12,11 @@
 
 @implementation SetCardView
 
+- (void)setSelected:(bool)selected {
+    [self setNeedsDisplay];
+    _selected = selected;
+}
+
 - (void)setColor:(UIColor *)color {
     [self setNeedsDisplay];
     _color = color;
@@ -43,18 +48,21 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    if (self.color == nil) {
-        // haven't been initialized yet.
+    if (self.color == nil) { // haven't been initialized yet.
         return;
     }
     
+    // Visually distinguish selected cards.
+    if (self.selected) {
+        [[UIColor grayColor] setFill];
+    } else {
+        [[UIColor whiteColor] setFill];
+    }
+    
+    [[UIBezierPath bezierPathWithRect:rect] fill];
+    
     int count = [self.count integerValue];
     int symbolHeight = rect.size.height / 6;
-    
-    [self.color setFill];
-    //[[UIBezierPath bezierPathWithOvalInRect:rect] fill];
-    
-    [self.color setFill];
     
     for (int i = 0; i < count; i++) {
         // This line of code calculates the y position of the symbol, no matter the number of symbols.

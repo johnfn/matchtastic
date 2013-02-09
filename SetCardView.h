@@ -10,6 +10,7 @@
 
 @interface SetCardView : UIView
 
+@property (nonatomic) bool selected;
 @property (nonatomic) UIColor *color;
 @property (nonatomic) NSNumber *count;
 @property (nonatomic) NSNumber *shading;
