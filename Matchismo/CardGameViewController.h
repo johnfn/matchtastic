@@ -15,5 +15,5 @@
 
 - (void)updateUI;
 - (void)deal;
-
+- (int)getTouchIndex:(UITapGestureRecognizer *)sender;
 @end

@@ -46,15 +46,7 @@
 }
 
 - (IBAction)tap:(UITapGestureRecognizer *)sender {
-    CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
-    
-    NSIndexPath *ip = [self.cardCollectionView indexPathForItemAtPoint:loc];
-    //SetCardCollectionViewCell *cell = (SetCardCollectionViewCell *)[self.cardCollectionView cellForItemAtIndexPath:ip];
-    if (ip == nil) return;
-    
-    NSUInteger index = [ip indexAtPosition:1];
-    [self.game flipCardAtIndex:index withPairSize:3];
-    
+    [self.game flipCardAtIndex:[super getTouchIndex:sender] withPairSize:3];
     [self updateUI];
 }
 

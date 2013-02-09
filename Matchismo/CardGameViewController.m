@@ -16,6 +16,7 @@
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flipDescription;
+@property (weak, nonatomic) UICollectionView *cardCollectionView;
 
 @end
 
@@ -39,6 +40,15 @@
 - (void)deal {
     self.game = nil; // cause the (custom-implemented) lazy-loading to fire again.
     [self updateUI];
+}
+
+- (int)getTouchIndex:(UITapGestureRecognizer *)sender {
+    CGPoint loc = [sender locationOfTouch:0 inView:self.cardCollectionView];
+    
+    NSIndexPath *ip = [self.cardCollectionView indexPathForItemAtPoint:loc];
+    if (ip == nil) return 0;
+    
+    return [ip indexAtPosition:1];
 }
 
 @end
