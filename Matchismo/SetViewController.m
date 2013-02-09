@@ -91,7 +91,7 @@
     // Now scroll to the bottom.
     // These two lines with help from StackOverflow:
     // http://stackoverflow.com/questions/952412/uiscrollview-scroll-to-bottom-programmatically
-    CGPoint bottomOffset = CGPointMake(0, self.cardCollectionView.contentSize.height - self.cardCollectionView.bounds.size.height);
+    CGPoint bottomOffset = CGPointMake(0, MAX(self.cardCollectionView.contentSize.height, self.cardCollectionView.bounds.size.height) - self.cardCollectionView.bounds.size.height);
     [self.cardCollectionView setContentOffset:bottomOffset animated:YES];
 }
 
