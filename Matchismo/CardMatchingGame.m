@@ -47,7 +47,13 @@
     return self;
 }
 
-- (bool)dealMoreCards:(NSUInteger)numCards {
+- (bool)dealMoreCards:(NSUInteger)numCards matchSize:(NSUInteger)matchSize{
+    if ([self doMatchesExist:matchSize]) {
+        self.score -= 100;
+        self.lastScore = -100;
+        self.matchFoundPenalty = true;
+    }
+
     for (int i = 0; i < numCards; i++) {
         Card *card = [self.deck drawRandomCard];
         
@@ -56,8 +62,6 @@
         } else {
             [self.cards addObject:card];
         }
-        
-        NSLog(@"%d", self.cards.count);
     }
     
     return true;
@@ -133,7 +137,29 @@
     }
 }
 
+- (bool)doMatchesExist:(NSUInteger)pairSize {
+    if (pairSize == 2) {
+        return false;
+    }
+
+    for (Card *card1 in self.cards) {
+        for (Card *card2 in self.cards) {
+            if (card2 == card1) continue;
+            for (Card *card3 in self.cards) {
+                if (card3 == card2 || card3 == card1) continue;
+                
+                if ([[card1 class] match:@[card1, card2, card3]]) {
+                    return true;
+                }
+            }
+        }
+    }
+    
+    return false;
+}
+
 - (void)flipCardAtIndex:(NSInteger)index withPairSize:(NSInteger)size {
+    self.matchFoundPenalty = false;
     if (index < 0) return;
     
     self.hasGameBegun = true;

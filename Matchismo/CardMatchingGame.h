@@ -18,12 +18,16 @@
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 
-- (bool)dealMoreCards:(NSUInteger)numCards;
+- (bool)dealMoreCards:(NSUInteger)numCards matchSize:(NSUInteger)matchSize;
+
+- (bool)doMatchesExist:(NSUInteger)pairSize;
 
 @property (nonatomic, readonly) int score;
+
 @property (readonly, nonatomic) bool hasGameBegun;
 @property (readonly, nonatomic) int numCards;
 
 @property (readonly, strong, nonatomic) NSMutableArray *lastPlayedCards;
 @property (readonly, nonatomic) int lastScore;
+@property (nonatomic) bool matchFoundPenalty;
 @end

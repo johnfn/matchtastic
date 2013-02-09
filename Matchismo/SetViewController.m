@@ -28,7 +28,6 @@
 
 #define CARDS_TO_DEAL 3
 #define START_CARD_NUM 12
-
 - (CardMatchingGame *)game {
     if (!super.game) {
         super.game = [[CardMatchingGame alloc] initWithCardCount:START_CARD_NUM usingDeck:[[SetCardDeck alloc] init]];
@@ -82,7 +81,7 @@
 }
 
 - (IBAction)threeMoreButton:(id)sender {
-    if (![self.game dealMoreCards:CARDS_TO_DEAL]) {
+    if (![self.game dealMoreCards:CARDS_TO_DEAL matchSize:3]) {
         [self.threeMoreButton setTitle:@"0 more!" forState:UIControlStateNormal];
     }
     
@@ -156,6 +155,11 @@
         self.welcomeLabel.attributedText = gameStatus;
     } else {
         self.welcomeLabel.attributedText = [[NSAttributedString alloc] initWithString:@"No cards played."];
+    }
+    
+    // This overrides the other ones (but it will quickly disappear).
+    if (self.game.matchFoundPenalty) {
+        self.welcomeLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"There was a match! -%d penalty!", self.game.lastScore]];
     }
     
     [self.cardCollectionView reloadData];
