@@ -15,19 +15,27 @@
 @property (weak, nonatomic) IBOutlet UIButton *dealButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+@property (weak, nonatomic) IBOutlet UIStepper *cardStepper;
+@property (nonatomic) int cardsToDeal;
 @end
-
-#define NUM_CARDS 20
 
 @implementation MatchismoViewController
 
+- (int)cardsToDeal {
+    return [self.cardStepper value];
+}
+
 - (CardMatchingGame *)game {
     if (!super.game) {
-        super.game = [[CardMatchingGame alloc] initWithCardCount:20 usingDeck:[[PlayingCardDeck alloc] init]];
+        super.game = [[CardMatchingGame alloc] initWithCardCount:[self.cardStepper value] usingDeck:[[PlayingCardDeck alloc] init]];
         [self updateUI];
     }
     
     return super.game;
+}
+
+- (IBAction)stepperValueChange:(UIStepper *)sender {
+    [self.dealButton setTitle:[NSString stringWithFormat:@"Deal %d!", (int)[sender value]] forState:UIControlStateNormal];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)asker

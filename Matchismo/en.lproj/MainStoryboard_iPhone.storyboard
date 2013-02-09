@@ -171,7 +171,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrR-tN-UgV">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Deal!">
+                                <state key="normal" title="Deal 20!">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -219,23 +219,30 @@
                                     <outlet property="delegate" destination="2" id="Dcb-G3-uPl"/>
                                 </connections>
                             </collectionView>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minimumValue="10" maximumValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="zMF-1z-11r">
+                                <connections>
+                                    <action selector="stepperValueChange:" destination="2" eventType="valueChanged" id="fQ3-PD-CjM"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="1S4-ew-XJA"/>
                             <constraint firstItem="OGe-pT-gtX" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="4yA-FC-Jrj"/>
+                            <constraint firstItem="OGe-pT-gtX" firstAttribute="top" secondItem="zMF-1z-11r" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9fw-CG-Eof"/>
                             <constraint firstItem="62G-G8-fE0" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="EAG-6e-7z8"/>
-                            <constraint firstItem="rS3-fL-RR4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="FHA-Pj-eH6"/>
+                            <constraint firstItem="rS3-fL-RR4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Lbo-UL-cfH"/>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="top" secondItem="OGe-pT-gtX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Opl-Un-izE"/>
                             <constraint firstItem="62G-G8-fE0" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="P3j-bF-3DU"/>
+                            <constraint firstItem="rS3-fL-RR4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="S1f-Bm-xYd"/>
                             <constraint firstItem="OGe-pT-gtX" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Zf7-fv-zNj"/>
                             <constraint firstItem="Q5N-09-NjI" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="aAr-Zb-a72"/>
-                            <constraint firstItem="rS3-fL-RR4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="cgl-P2-pbQ"/>
+                            <constraint firstItem="rS3-fL-RR4" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="im1-tJ-ddZ"/>
                             <constraint firstItem="Q5N-09-NjI" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="kwX-rh-P5a"/>
-                            <constraint firstItem="OGe-pT-gtX" firstAttribute="top" secondItem="rS3-fL-RR4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="q3G-hb-qkt"/>
+                            <constraint firstItem="zMF-1z-11r" firstAttribute="top" secondItem="rS3-fL-RR4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="oUJ-oQ-hLv"/>
                             <constraint firstItem="UrR-tN-UgV" firstAttribute="centerX" secondItem="OGe-pT-gtX" secondAttribute="centerX" type="default" id="t9P-2t-QeR"/>
-                            <constraint firstItem="rS3-fL-RR4" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="uvt-hB-T9V"/>
+                            <constraint firstItem="zMF-1z-11r" firstAttribute="centerX" secondItem="OGe-pT-gtX" secondAttribute="centerX" type="default" id="tMG-ee-nFL"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XIM-Rk-DYv" appends="YES" id="dLW-RN-Nwl"/>
@@ -245,6 +252,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cardCollectionView" destination="rS3-fL-RR4" id="gzu-40-stQ"/>
+                        <outlet property="cardStepper" destination="zMF-1z-11r" id="hCh-VB-Zq1"/>
                         <outlet property="dealButton" destination="UrR-tN-UgV" id="mK5-nP-Juc"/>
                         <outlet property="flipDescription" destination="OGe-pT-gtX" id="lqe-QO-5FX"/>
                         <outlet property="flipsLabel" destination="Q5N-09-NjI" id="ETx-XW-VB1"/>
@@ -274,7 +282,11 @@
         <class className="MatchismoViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchismoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="dealButton:"/>
+                <relationship kind="action" name="stepperValueChange:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="tapGesture:"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="cardStepper" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="dealButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
             </relationships>

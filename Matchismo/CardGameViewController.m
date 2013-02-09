@@ -13,7 +13,6 @@
 
 @interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flipDescription;
 @property (weak, nonatomic) UICollectionView *cardCollectionView;
@@ -34,8 +33,6 @@
 
 - (void)updateUI {
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-
     [self.cardCollectionView reloadData];
 }
 
